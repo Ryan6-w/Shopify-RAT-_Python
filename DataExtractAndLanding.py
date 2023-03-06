@@ -57,6 +57,9 @@ worksheet.cell(row=1, column=3, value='Option1 Name')
 worksheet.cell(row=1, column=4, value='Option1 Value') 
 worksheet.cell(row=1, column=5, value='Variant SKU') 
 worksheet.cell(row=1, column=6, value='Variant Price') 
+worksheet.cell(row=1, column=7, value='Status') 
+worksheet.cell(row=1, column=8, value='Variant Inventory Policy') 
+worksheet.cell(row=1, column=9, value='Variant Fulfillment Service') 
 
 
 
@@ -69,6 +72,11 @@ for i,sku in enumerate(skus):
         worksheet.cell(row=skuRow, column=4, value=color)
         worksheet.cell(row=skuRow,column=1,value=sku)
         worksheet.cell(row=skuRow,column=3,value="Material")
+        worksheet.cell(row=skuRow,column=7,value="active")
+        worksheet.cell(row=skuRow,column=8,value="deny")
+        worksheet.cell(row=skuRow,column=9,value="manual")
+
+
         skuRow +=1
     for x, code in enumerate(codes):
         worksheet.cell(row=codeRow,column=5,value=sku + "-" + code)
@@ -110,9 +118,6 @@ for t, a3p in enumerate(a3Ps):
     for i in range(a3Row,a3Row+3):
         worksheet.cell(row=i, column=6, value=a3p)
     a3Row += 40
-
-
-
 
 
 workbook.save('output.xlsx')
