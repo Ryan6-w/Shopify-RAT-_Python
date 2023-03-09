@@ -1,14 +1,33 @@
 import pandas as pd
 from openpyxl import Workbook
+import os
+import glob
+import re
+
 
 color = pd.ExcelFile('/Users/ryanweng/Documents/Cuppowood/website/产品导入/Color info_detail.xlsx')
-sku = pd.ExcelFile('/Users/ryanweng/Documents/Cuppowood/website/产品导入/Cabinet_detailxlsx.xlsx')
+sku = pd.ExcelFile('/Users/ryanweng/Documents/Cuppowood/website/产品导入/Cabinet_detail.xlsx')
+# s3Path= "https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/"
 
 # 读取第一个 Excel 文件，提取指定列的数据
 cName = pd.read_excel(color, sheet_name='All', usecols=['Name','Code'])
 
 # 读取第二个 Excel 文件，提取指定列的数据
-pSku= pd.read_excel(sku, sheet_name='Test', usecols=['SKU','T','E','B','A1','A2','A3'])
+pSku= pd.read_excel(sku, sheet_name='Test', usecols=['SKU','T','E','B','A1','A2','A3','URL'])
+
+#读取橱柜照片的文件名; 定义文件路径和文件类型
+photoPath = "/Users/ryanweng/Documents/Cuppowood/website/产品导入/Shopify/Cabinet/"
+photoType = "*.jpg"
+CabinetPhotoNames = []
+
+# 获取符合条件的文件列表
+cabinets = glob.glob(os.path.join(photoPath, photoType))
+# 对获取到的橱柜产品进行循环查找
+for cabinet in cabinets:
+    # 获取橱柜产品照片文件名
+    cabinetPhoto = os.path.basename(cabinet)
+    # 把图片名字存储到准备好的array 里
+    CabinetPhotoNames.append(cabinetPhoto)
 
 # colors = ['Brushed Aluminum', 'River Rock', 'Sheer Beauty', 'Fashionista', 'The Chameleon', 'Weekend Getaway', 'Winter Fun', 'Casting at First Light', 'Sugar on Ice', 'Sand Gladstone Oak', 'Grey-Beige Gladstone Oak', 'Brown Tossini Elm', 'Tobacco Gladstone Oak', 'Tobacco Halifax Oak', 'Black Halifax Oak', 'Natural Halifax Oak', 'White Halifax Oak', 'Pearl White HG', 'Winter Frost SM', 'Sun Grey HG', 'Sun Grey SM', 'Stone Grey HG', 'Stone Grey SM', 'Eclipse  HG', 'Eclipse  SM', 'Royal Blue HG', 'Royal Blue SM', 'Majestic HG', 'Majestic SM', 'Ida 01', 'Ida 03', 'Roble Muratti 01', 'Roble Muratti 04', 'Factory 01', 'Factory 02', 'Como Ash 01', 'Como Ash 03', 'Gris Nube Zenit', 'Gris Nube HG', 'Olmo HG']
 colors = []
@@ -47,6 +66,10 @@ a3Ps =[]
 for i, a3p in enumerate(pSku['A3']):
     a3Ps.append(a3p)
 
+urls =[]
+for i,url in enumerate(pSku['URL']):
+    urls.append(url) 
+
 
 # 将字典写入到 Excel 文件中,我们使用 openpyxl 库将这个字典写入到一个新的 Excel 文件中，其中第一列包含第一个文件中的值，第二列包含第二个文件中的整个列。
 workbook = Workbook()
@@ -60,21 +83,32 @@ worksheet.cell(row=1, column=6, value='Variant Price')
 worksheet.cell(row=1, column=7, value='Status') 
 worksheet.cell(row=1, column=8, value='Variant Inventory Policy') 
 worksheet.cell(row=1, column=9, value='Variant Fulfillment Service') 
+worksheet.cell(row=1, column=10, value='Variant Requires Shipping') 
+worksheet.cell(row=1, column=11, value='Variant Taxable') 
+worksheet.cell(row=1, column=12, value='Variant Weight Unit') 
+worksheet.cell(row=1, column=13, value='Image Src') 
+worksheet.cell(row=1, column=14, value='Image Position') 
 
 
 
 skuRow =2 
 codeRow =2
+urlIndex =0
 for i,sku in enumerate(skus):
     worksheet.cell(row=skuRow, column=2, value=sku)
-
+    worksheet.cell(row=skuRow,column=7,value="active")
+    worksheet.cell(row=skuRow,column=14,value=1) 
+    worksheet.cell(row=skuRow,column=13,value=urls[urlIndex]) 
+    urlIndex = urlIndex+1
     for j, color in enumerate(colors):
         worksheet.cell(row=skuRow, column=4, value=color)
-        worksheet.cell(row=skuRow,column=1,value="Cuppowood"+ sku)
+        worksheet.cell(row=skuRow,column=1,value="Cuppowood-"+ sku)
         worksheet.cell(row=skuRow,column=3,value="Material")
-        worksheet.cell(row=skuRow,column=7,value="active")
         worksheet.cell(row=skuRow,column=8,value="deny")
         worksheet.cell(row=skuRow,column=9,value="manual")
+        worksheet.cell(row=skuRow,column=10,value="TRUE")
+        worksheet.cell(row=skuRow,column=11,value="TRUE")
+        worksheet.cell(row=skuRow,column=12,value="g")
 
 
         skuRow +=1
@@ -88,7 +122,7 @@ for t, tp in enumerate(tPs):
     for i in range(tRow,tRow+9):
         worksheet.cell(row=i, column=6, value=tp)  
     tRow +=40
- 
+
 eRow = 11
 for t, ep in enumerate(ePs):
     for i in range(eRow,eRow+8):
@@ -120,4 +154,4 @@ for t, a3p in enumerate(a3Ps):
     a3Row += 40
 
 
-workbook.save('output.xlsx')
+workbook.save('/Users/ryanweng/Documents/Cuppowood/Python/Testfiles/output.xlsx')
