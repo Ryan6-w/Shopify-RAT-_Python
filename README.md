@@ -1,1 +1,0 @@
-# Shopify-RAT-_Python
