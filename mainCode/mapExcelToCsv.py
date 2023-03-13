@@ -1,14 +1,23 @@
 import csv
 import pandas as pd
 from openpyxl import load_workbook
+import os
+
+tempCSVPath = '/Users/ryanweng/Documents/Cuppowood/website/产品导入/product_template.csv'
+excelPath = '/Users/ryanweng/Documents/Cuppowood/Python/Testfiles/output.xlsx'
+newCSVpath = '/Users/ryanweng/Documents/Cuppowood/Python/Testfiles/output.csv'
+
+if os.path.exists(newCSVpath):
+    os.remove(newCSVpath)
+
 
 # 打开 csv 文件并读取 header
-with open('/Users/ryanweng/Documents/Cuppowood/website/产品导入/product_template.csv', 'r') as f:
+with open(tempCSVPath, 'r') as f:
     reader = csv.reader(f)
     header = next(reader)
 
 # 打开 Excel 文件
-wb = load_workbook('/Users/ryanweng/Documents/Cuppowood/Python/Testfiles/output.xlsx')
+wb = load_workbook(excelPath)
 
 # 获取第一个 sheet
 ws = wb.active
@@ -28,10 +37,11 @@ for row in df.iloc[1:].values:
     data.append(d)
 
 # 打开 CSV 文件并写入数据
-with open('/Users/ryanweng/Documents/Cuppowood/Python/Testfiles/output.csv', 'a', newline='') as f:
+with open(newCSVpath, 'a', newline='') as f:
     writer = csv.DictWriter(f, fieldnames=header)
     if f.tell() == 0:
         # CSV 文件没有 header，写入 header
         writer.writeheader()
     # 写入数据
     writer.writerows(data)
+

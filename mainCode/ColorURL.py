@@ -3,14 +3,14 @@ import pandas as pd
 from openpyxl import Workbook
 
 tempURL ="https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Colors/"
+color = pd.ExcelFile('/Users/ryanweng/Documents/Cuppowood/website/产品导入/Adroit Stocked Color info.xlsx')
 
-color = pd.ExcelFile('/Users/ryanweng/Documents/Cuppowood/website/产品导入/Color info_detail.xlsx')
 
 # 读取第一个 Excel 文件，提取指定列的数据
-cName = pd.read_excel(color, sheet_name='All', usecols=['Name'])
+cName = pd.read_excel(color, usecols=['Color name'])
 
 colors = []
-for i, color in enumerate(cName['Name']):
+for i, color in enumerate(cName['Color name']):
     colors.append(color)
 
 workbook = Workbook()
@@ -23,9 +23,7 @@ worksheet.cell(row=1, column=3, value='Custom')
 for i,color in enumerate(colors):
     worksheet.cell(row=i+2, column=1, value=color)
     worksheet.cell(row=i+2,column=2,value="Image url")
-    # worksheet.cell(row=i+2,column=3,value="")
 
-        
     url = tempURL+color.replace(" ","+")+".jpg"
     worksheet.cell(row=i+2,column=3,value=url)
 
