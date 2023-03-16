@@ -36,5 +36,5 @@ count =0
 # productList index: 0=sku, 1= url, 2= box price, 3 = A ,4= B, 5=C, 6=D ,7=E ,8 =F 
 # colorsList index: 0=name, 1 =code, 2= price level
 for productRow in productList:
-     = substring_until_number(str(productRow[0]))
+    result= substring_until_number(str(productRow[0]))
     print(result)

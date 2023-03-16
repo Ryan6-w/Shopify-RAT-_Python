@@ -1,73 +1,54 @@
 import pandas as pd
 from openpyxl import Workbook
 import os
-import glob
-import re
 
 
-color = pd.ExcelFile('/Users/ryanweng/Documents/Cuppowood/website/产品导入/Adroit Stocked Color info.xlsx')
-sku = pd.ExcelFile('/Users/ryanweng/Documents/Cuppowood/website/产品导入/CNG_Cabinet_ Data.xlsx')
-# s3Path= "https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/"
+def substring_until_number(s):
+    result = ""
+    for i in s:
+        if s[0].isdigit():
+            return "DB"
+        if i.isdigit():
+            break
+        result += i
+    return result
+
+colorPath = pd.ExcelFile('/Users/ryanweng/Documents/Cuppowood/website/产品导入/Adroit Stocked Color info.xlsx')
+productPath = pd.ExcelFile('/Users/ryanweng/Documents/Cuppowood/website/产品导入/CNG_Cabinet_ Data.xlsx')
+newExcelPath = '/Users/ryanweng/Documents/Cuppowood/Python/Testfiles/output.xlsx'
+
+# remove the excel file and csv file
+if os.path.exists(newExcelPath):
+    os.remove(newExcelPath)
+
 
 # 读取第一个 Excel 文件，提取指定列的数据
-cName = pd.read_excel(color, usecols=['Color name','Panel Code ( BFM )','Price Level'])
-
+colors = pd.read_excel(colorPath, usecols=['Color name','Panel Code','Price Level'])
 # 读取第二个 Excel 文件，提取指定列的数据
-pSku= pd.read_excel(sku, sheet_name='demo', usecols=['CABINET','URL','COMODO_BOX','A','B','C','D','E','F'])
+products= pd.read_excel(productPath, sheet_name='demo2', usecols=['CABINET','URL','COMODO_BOX','A','B','C','D','E','F'])
 
-# #读取橱柜照片的文件名; 定义文件路径和文件类型
-# photoPath = "/Users/ryanweng/Documents/Cuppowood/website/产品导入/Shopify/Cabinet/"
-# photoType = "*.jpg"
-# CabinetPhotoNames = []
+# 指定要获取值的列名列表
+colorsExtract = ['Color name','Panel Code','Price Level']
+# 创建一个空列表，用于存储提取的值
+colorsList = []
+# 遍历每一行，提取指定列的值并添加到列表中；用iterrows 来遍历每一行，index为索引，row 为当前行数
+for index, row in colors.iterrows():
+    # 下面代码是简写的展开版本
+    # values =[]
+    # for column in colorsExtract:
+    #     value = row[column]
+    #     values.append(value)
+    values = [row[columnHeader] for columnHeader in colorsExtract]
+    colorsList.append(values)
 
-# # 获取符合条件的文件列表
-# cabinets = glob.glob(os.path.join(photoPath, photoType))
-# # 对获取到的橱柜产品进行循环查找
-# for cabinet in cabinets:
-#     # 获取橱柜产品照片文件名
-#     cabinetPhoto = os.path.basename(cabinet)
-#     # 把图片名字存储到准备好的array 里
-#     CabinetPhotoNames.append(cabinetPhoto)
-
-colors = []
-for i, color in enumerate(cName['Name']):
-    colors.append(color)
-
-codes =[]
-for i, code in enumerate(cName['Code']) :
-    codes.append(code)
-
-skus = []
-for i, sku in enumerate(pSku['SKU']):
-    skus.append(sku)
-
-tPs =[]
-for i, tp in enumerate(pSku['T']):
-    tPs.append(tp)
-
-ePs =[]
-for i, ep in enumerate(pSku['E']):
-    ePs.append(ep)
-
-bPs =[]
-for i, bp in enumerate(pSku['B']):
-    bPs.append(bp)
-
-a1Ps =[]
-for i, a1p in enumerate(pSku['A1']):
-    a1Ps.append(a1p)
-
-a2Ps =[]
-for i, a2p in enumerate(pSku['A2']):
-    a2Ps.append(a2p)
-
-a3Ps =[]
-for i, a3p in enumerate(pSku['A3']):
-    a3Ps.append(a3p)
-
-urls =[]
-for i,url in enumerate(pSku['URL']):
-    urls.append(url) 
+# 指定要获取值的列名列表
+productExtract = ['CABINET','URL','COMODO_BOX','A','B','C','D','E','F']
+# 创建一个空列表，用于存储提取的值
+productList = []
+# 遍历每一行，提取指定列的值并添加到列表中；用iterrows 来遍历每一行，index为索引，row 为当前行数
+for index, row in products.iterrows():
+    values = [row[columnHeader] for columnHeader in productExtract]
+    productList.append(values)
 
 
 # 将字典写入到 Excel 文件中,我们使用 openpyxl 库将这个字典写入到一个新的 Excel 文件中，其中第一列包含第一个文件中的值，第二列包含第二个文件中的整个列。
@@ -87,70 +68,101 @@ worksheet.cell(row=1, column=11, value='Variant Taxable')
 worksheet.cell(row=1, column=12, value='Variant Weight Unit') 
 worksheet.cell(row=1, column=13, value='Image Src') 
 worksheet.cell(row=1, column=14, value='Image Position') 
+worksheet.cell(row=1, column=15, value='Type') 
+worksheet.cell(row=1, column=16, value='Product Category') 
+
+# 如果没有价格那么价格是String, 有价格会是float 或者int
+# for productRow in productList:
+    # print(productType(productRow[2]))
 
 
-
-skuRow =2 
-codeRow =2
-urlIndex =0
-for i,sku in enumerate(skus):
-    worksheet.cell(row=skuRow, column=2, value=sku)
-    worksheet.cell(row=skuRow,column=7,value="active")
-    worksheet.cell(row=skuRow,column=14,value=1) 
-    worksheet.cell(row=skuRow,column=13,value=urls[urlIndex]) 
-    urlIndex = urlIndex+1
-    for j, color in enumerate(colors):
-        worksheet.cell(row=skuRow, column=4, value=color)
-        worksheet.cell(row=skuRow,column=1,value="Cuppowood-"+ sku)
-        worksheet.cell(row=skuRow,column=3,value="Material")
-        worksheet.cell(row=skuRow,column=8,value="deny")
-        worksheet.cell(row=skuRow,column=9,value="manual")
-        worksheet.cell(row=skuRow,column=10,value="TRUE")
-        worksheet.cell(row=skuRow,column=11,value="TRUE")
-        worksheet.cell(row=skuRow,column=12,value="g")
-
-
-        skuRow +=1
-    for x, code in enumerate(codes):
-        worksheet.cell(row=codeRow,column=5,value=sku + "-" + code)
-        codeRow +=1
-
-# T 的价格是2-10， E:11-18, B: 19-30 , a1：31-34, a2: 35-38, a3:39-41 ; 下一次SKU就是第一次价格出现+40
-tRow = 2
-for t, tp in enumerate(tPs):
-    for i in range(tRow,tRow+9):
-        worksheet.cell(row=i, column=6, value=tp)  
-    tRow +=40
-
-eRow = 11
-for t, ep in enumerate(ePs):
-    for i in range(eRow,eRow+8):
-        worksheet.cell(row=i, column=6, value=ep)
-    eRow +=40
-
-bRow = 19
-for t, bp in enumerate(bPs):
-    for i in range(bRow,bRow+12):
-        worksheet.cell(row=i, column=6, value=bp)
-    bRow += 40
-
-a1Row = 31
-for t, a1p in enumerate(a1Ps):
-    for i in range(a1Row,a1Row+4):
-        worksheet.cell(row=i, column=6, value=a1p)
-    a1Row += 40
-
-a2Row = 35
-for t, a2p in enumerate(a2Ps):
-    for i in range(a2Row,a2Row+4):
-        worksheet.cell(row=i, column=6, value=a2p)
-    a2Row += 40
-
-a3Row = 39
-for t, a3p in enumerate(a3Ps):
-    for i in range(a3Row,a3Row+3):
-        worksheet.cell(row=i, column=6, value=a3p)
-    a3Row += 40
+insertRow = 2 
+price =0
+count =0
+productType = ""
+tag =""
+# productList index: 0=sku, 1= url, 2= box price, 3 = A ,4= B, 5=C, 6=D ,7=E ,8 =F 
+# colorsList index: 0=name, 1 =code, 2= price level
+for productRow in productList:
+    if not isinstance(productRow[2],(int,float)):
+        print("Product with empty price is: " + str(productRow[0])) # 不要用Remove 因为list 是有序，会自动向上移,会少读一个产品
+        productRow =[]
+        count +=1
+        continue
+    
+    if not isinstance(productRow[1],(str)):
+        print("Product with price but not photo: " + str(productRow[0])) # 不要用Remove 因为list 是有序，会自动向上移,会少读一个产品
+        productRow =[]
+        count +=1
+        continue
+    worksheet.cell(row=insertRow, column=2, value=productRow[0])
+    worksheet.cell(row=insertRow,column=7,value="active")
+    worksheet.cell(row=insertRow,column=13,value=productRow[1]) 
+    
+    typeSub= substring_until_number(str(productRow[0]))
+    if(typeSub =="W"):
+        productType = "Wall Cabinet"
+    elif(typeSub == "LW"):
+        productType ="Lift Up Door_Wall Cabinet"
+    elif(typeSub == "DCW"):
+        productType ="Dia Corner Wall"
+    elif(typeSub == "PCCW"):
+        productType = "Pie Cut Wall"
+    elif(typeSub == "BCW"):
+        productType = "Blind Wall"
+    elif(typeSub == "B"):
+        productType = "Base Cabinet"
+    elif(typeSub == "SB"):
+        productType = "Sink Base"
+    elif(typeSub == "FSB"):
+        productType = "Farm Sink Base"
+    elif(typeSub == "DCB" or typeSub=="DCSB"):
+        productType = "Diagonal Base"
+    elif(typeSub == "PCCB"):
+        productType = "Pie Cut Base"
+    elif(typeSub == "DB"):
+        productType = "Drawer Base"
+    elif(typeSub == "BCB" or typeSub=="BCSB"):
+        productType = "Base Blind"
+    elif(typeSub == "PC"):
+        productType = "Pantry"
+    elif(typeSub == "MWB"):
+        productType = "Microwave Cabinet"
+    elif(typeSub == "OVPC" or typeSub == "OVB"):
+        productType = "Oven Cabinet"
+    elif(typeSub == "KND"):
+        productType = "Knee Drawer"
+    worksheet.cell(row=insertRow,column=15,value=productType) 
+    worksheet.cell(row=insertRow,column=16,value="Furniture > Cabinets & Storage > Kitchen Cabinets") 
 
 
-workbook.save('/Users/ryanweng/Documents/Cuppowood/Python/Testfiles/output.xlsx')
+    for colorRow in colorsList:
+        worksheet.cell(row=insertRow, column=4, value=colorRow[0])
+        worksheet.cell(row=insertRow, column=1, value="Cuppowood-"+ str(productRow[0]))
+        worksheet.cell(row=insertRow,column=3,value="Material")
+
+        worksheet.cell(row=insertRow,column=5,value=str(productRow[0])+"-"+str(colorRow[1]))
+        if(colorRow[2] == 'A'):
+            price = round(productRow[2]+productRow[3],2)
+        elif (colorRow[2] == 'B'):
+            price = round(productRow[2]+productRow[4],2)
+        elif (colorRow[2] == 'C'):
+            price = round(productRow[2]+productRow[5],2)
+        elif (colorRow[2] == 'D'):
+            price = round(productRow[2]+productRow[6],2)
+        elif (colorRow[2] == 'E'):
+            price = round(productRow[2]+productRow[7],2)
+        elif (colorRow[2] == 'F'):
+            price = round(productRow[2]+productRow[8],2)
+        else:
+            price =0
+        worksheet.cell(row=insertRow,column=6,value= price)
+        worksheet.cell(row=insertRow,column=8,value="deny")
+        worksheet.cell(row=insertRow,column=9,value="manual")
+        worksheet.cell(row=insertRow,column=10,value="TRUE")
+        worksheet.cell(row=insertRow,column=11,value="TRUE")
+        worksheet.cell(row=insertRow,column=12,value="g")
+        insertRow +=1
+
+print("Total removed numbers are: "+ str(count))
+workbook.save(newExcelPath)
