@@ -1,5 +1,5 @@
 Handle,Title,Body (HTML),Vendor,Product Category,Type,Tags,Published,Option1 Name,Option1 Value,Option2 Name,Option2 Value,Option3 Name,Option3 Value,Variant SKU,Variant Grams,Variant Inventory Tracker,Variant Inventory Qty,Variant Inventory Policy,Variant Fulfillment Service,Variant Price,Variant Compare At Price,Variant Requires Shipping,Variant Taxable,Variant Barcode,Image Src,Image Position,Image Alt Text,Gift Card,SEO Title,SEO Description,Google Shopping / Google Product Category,Google Shopping / Gender,Google Shopping / Age Group,Google Shopping / MPN,Google Shopping / AdWords Grouping,Google Shopping / AdWords Labels,Google Shopping / Condition,Google Shopping / Custom Product,Google Shopping / Custom Label 0,Google Shopping / Custom Label 1,Google Shopping / Custom Label 2,Google Shopping / Custom Label 3,Google Shopping / Custom Label 4,Variant Image,Variant Weight Unit,Variant Tax Code,Cost per item,Price / International,Compare At Price / International,Status
-Cuppowood-W241212,W241212,,,Furniture > Cabinets & Storage > Kitchen Cabinets,Wall Cabinet,,,Material,Pearl White HG,,,,,W241212-MDPE3004-181S90,,,,deny,manual,292.01,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/W-EWR_DOUBLEDOOR.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
+Cuppowood-W241212,"Standard Hight Wall Cabinet 24""W 12""H 12""D (W241212)","Depth: 12, Height: 12, Width: 24",,Furniture > Cabinets & Storage > Kitchen Cabinets,Wall Cabinet,"Standard Hight Wall Cabinet, 24W, 12H, D12D",,Material,Pearl White HG,,,,,W241212-MDPE3004-181S90,,,,deny,manual,292.01,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/W-EWR_DOUBLEDOOR.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
 Cuppowood-W241212,,,,,,,,Material,Winter Frost SM,,,,,W241212-MDPE3035-181S36,,,,deny,manual,292.01,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-W241212,,,,,,,,Material,Sun Grey HG,,,,,W241212-MDPE3033-181S90,,,,deny,manual,292.01,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-W241212,,,,,,,,Material,Sun Grey SM,,,,,W241212-MDPE3033-181S36,,,,deny,manual,292.01,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
@@ -39,7 +39,7 @@ Cuppowood-W241212,,,,,,,,Material,Tobacco Halifax Oak,,,,,W241212-H1181 ST37,,,,
 Cuppowood-W241212,,,,,,,,Material,Black Halifax Oak,,,,,W241212-H3182 ST37,,,,deny,manual,292.01,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-W241212,,,,,,,,Material,Natural Halifax Oak,,,,,W241212-H1180 ST37,,,,deny,manual,292.01,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-W241212,,,,,,,,Material,White Halifax Oak,,,,,W241212-H1176 ST37,,,,deny,manual,292.01,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
-Cuppowood-W241512,W241512,,,Furniture > Cabinets & Storage > Kitchen Cabinets,Wall Cabinet,,,Material,Pearl White HG,,,,,W241512-MDPE3004-181S90,,,,deny,manual,307.14,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/W-EWR_DOUBLEDOOR.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
+Cuppowood-W241512,"Standard Hight Wall Cabinet 24""W 15""H 12""D (W241512)","Depth: 12, Height: 15, Width: 24",,Furniture > Cabinets & Storage > Kitchen Cabinets,Wall Cabinet,"Standard Hight Wall Cabinet, 24W, 15H, D12D",,Material,Pearl White HG,,,,,W241512-MDPE3004-181S90,,,,deny,manual,307.14,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/W-EWR_DOUBLEDOOR.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
 Cuppowood-W241512,,,,,,,,Material,Winter Frost SM,,,,,W241512-MDPE3035-181S36,,,,deny,manual,307.14,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-W241512,,,,,,,,Material,Sun Grey HG,,,,,W241512-MDPE3033-181S90,,,,deny,manual,307.14,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-W241512,,,,,,,,Material,Sun Grey SM,,,,,W241512-MDPE3033-181S36,,,,deny,manual,307.14,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
@@ -79,7 +79,7 @@ Cuppowood-W241512,,,,,,,,Material,Tobacco Halifax Oak,,,,,W241512-H1181 ST37,,,,
 Cuppowood-W241512,,,,,,,,Material,Black Halifax Oak,,,,,W241512-H3182 ST37,,,,deny,manual,307.14,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-W241512,,,,,,,,Material,Natural Halifax Oak,,,,,W241512-H1180 ST37,,,,deny,manual,307.14,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-W241512,,,,,,,,Material,White Halifax Oak,,,,,W241512-H1176 ST37,,,,deny,manual,307.14,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
-Cuppowood-W241812,W241812,,,Furniture > Cabinets & Storage > Kitchen Cabinets,Wall Cabinet,,,Material,Pearl White HG,,,,,W241812-MDPE3004-181S90,,,,deny,manual,307.75,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/W-EWR_DOUBLEDOOR.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
+Cuppowood-W241812,"Standard Hight Wall Cabinet 24""W 18""H 12""D (W241812)","Depth: 12, Height: 18, Width: 24",,Furniture > Cabinets & Storage > Kitchen Cabinets,Wall Cabinet,"Standard Hight Wall Cabinet, 24W, 18H, D12D",,Material,Pearl White HG,,,,,W241812-MDPE3004-181S90,,,,deny,manual,307.75,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/W-EWR_DOUBLEDOOR.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
 Cuppowood-W241812,,,,,,,,Material,Winter Frost SM,,,,,W241812-MDPE3035-181S36,,,,deny,manual,307.75,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-W241812,,,,,,,,Material,Sun Grey HG,,,,,W241812-MDPE3033-181S90,,,,deny,manual,307.75,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-W241812,,,,,,,,Material,Sun Grey SM,,,,,W241812-MDPE3033-181S36,,,,deny,manual,307.75,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
@@ -119,7 +119,7 @@ Cuppowood-W241812,,,,,,,,Material,Tobacco Halifax Oak,,,,,W241812-H1181 ST37,,,,
 Cuppowood-W241812,,,,,,,,Material,Black Halifax Oak,,,,,W241812-H3182 ST37,,,,deny,manual,307.75,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-W241812,,,,,,,,Material,Natural Halifax Oak,,,,,W241812-H1180 ST37,,,,deny,manual,307.75,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-W241812,,,,,,,,Material,White Halifax Oak,,,,,W241812-H1176 ST37,,,,deny,manual,307.75,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
-Cuppowood-LW242412,LW242412,,,Furniture > Cabinets & Storage > Kitchen Cabinets,Lift Up Door_Wall Cabinet,,,Material,Pearl White HG,,,,,LW242412-MDPE3004-181S90,,,,deny,manual,354.98,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/LW-EWLK2.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
+Cuppowood-LW242412,"Standard Lift Up Door Wall Cabinet 24""W 24""H 12""D (LW242412)","Depth: 12, Height: 24, Width: 24",,Furniture > Cabinets & Storage > Kitchen Cabinets,Wall Cabinet,"Standard Lift Up Door Wall Cabinet, 24W, 24H, D12D",,Material,Pearl White HG,,,,,LW242412-MDPE3004-181S90,,,,deny,manual,354.98,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/LW-EWLK2.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
 Cuppowood-LW242412,,,,,,,,Material,Winter Frost SM,,,,,LW242412-MDPE3035-181S36,,,,deny,manual,354.98,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-LW242412,,,,,,,,Material,Sun Grey HG,,,,,LW242412-MDPE3033-181S90,,,,deny,manual,354.98,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-LW242412,,,,,,,,Material,Sun Grey SM,,,,,LW242412-MDPE3033-181S36,,,,deny,manual,354.98,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
@@ -159,7 +159,7 @@ Cuppowood-LW242412,,,,,,,,Material,Tobacco Halifax Oak,,,,,LW242412-H1181 ST37,,
 Cuppowood-LW242412,,,,,,,,Material,Black Halifax Oak,,,,,LW242412-H3182 ST37,,,,deny,manual,354.98,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-LW242412,,,,,,,,Material,Natural Halifax Oak,,,,,LW242412-H1180 ST37,,,,deny,manual,354.98,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-LW242412,,,,,,,,Material,White Halifax Oak,,,,,LW242412-H1176 ST37,,,,deny,manual,354.98,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
-Cuppowood-LW272412,LW272412,,,Furniture > Cabinets & Storage > Kitchen Cabinets,Lift Up Door_Wall Cabinet,,,Material,Pearl White HG,,,,,LW272412-MDPE3004-181S90,,,,deny,manual,379.65,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/LW-EWLK2.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
+Cuppowood-LW272412,"Standard Lift Up Door Wall Cabinet 27""W 24""H 12""D (LW272412)","Depth: 12, Height: 24, Width: 27",,Furniture > Cabinets & Storage > Kitchen Cabinets,Wall Cabinet,"Standard Lift Up Door Wall Cabinet, 27W, 24H, D12D",,Material,Pearl White HG,,,,,LW272412-MDPE3004-181S90,,,,deny,manual,379.65,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/LW-EWLK2.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
 Cuppowood-LW272412,,,,,,,,Material,Winter Frost SM,,,,,LW272412-MDPE3035-181S36,,,,deny,manual,379.65,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-LW272412,,,,,,,,Material,Sun Grey HG,,,,,LW272412-MDPE3033-181S90,,,,deny,manual,379.65,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-LW272412,,,,,,,,Material,Sun Grey SM,,,,,LW272412-MDPE3033-181S36,,,,deny,manual,379.65,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
@@ -199,7 +199,7 @@ Cuppowood-LW272412,,,,,,,,Material,Tobacco Halifax Oak,,,,,LW272412-H1181 ST37,,
 Cuppowood-LW272412,,,,,,,,Material,Black Halifax Oak,,,,,LW272412-H3182 ST37,,,,deny,manual,379.65,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-LW272412,,,,,,,,Material,Natural Halifax Oak,,,,,LW272412-H1180 ST37,,,,deny,manual,379.65,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-LW272412,,,,,,,,Material,White Halifax Oak,,,,,LW272412-H1176 ST37,,,,deny,manual,379.65,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
-Cuppowood-LW241212_HK-XS,LW241212_HK-XS,,,Furniture > Cabinets & Storage > Kitchen Cabinets,Lift Up Door_Wall Cabinet,,,Material,Pearl White HG,,,,,LW241212_HK-XS-MDPE3004-181S90,,,,deny,manual,282.36,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/LW_HK-XS-EWLHX.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
+Cuppowood-LW241212_HK-XS,"Lift Up Door Wall Cabinet with HK-XS 24""W 12""H 12""D (LW241212_HK-XS)","Depth: 12, Height: 12, Width: 24",,Furniture > Cabinets & Storage > Kitchen Cabinets,Wall Cabinet,"Lift Up Door Wall Cabinet, 24W, 12H, D12D, HK-XS",,Material,Pearl White HG,,,,,LW241212_HK-XS-MDPE3004-181S90,,,,deny,manual,282.36,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/LW_HK-XS-EWLHX.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
 Cuppowood-LW241212_HK-XS,,,,,,,,Material,Winter Frost SM,,,,,LW241212_HK-XS-MDPE3035-181S36,,,,deny,manual,282.36,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-LW241212_HK-XS,,,,,,,,Material,Sun Grey HG,,,,,LW241212_HK-XS-MDPE3033-181S90,,,,deny,manual,282.36,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-LW241212_HK-XS,,,,,,,,Material,Sun Grey SM,,,,,LW241212_HK-XS-MDPE3033-181S36,,,,deny,manual,282.36,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
@@ -239,7 +239,7 @@ Cuppowood-LW241212_HK-XS,,,,,,,,Material,Tobacco Halifax Oak,,,,,LW241212_HK-XS-
 Cuppowood-LW241212_HK-XS,,,,,,,,Material,Black Halifax Oak,,,,,LW241212_HK-XS-H3182 ST37,,,,deny,manual,282.36,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-LW241212_HK-XS,,,,,,,,Material,Natural Halifax Oak,,,,,LW241212_HK-XS-H1180 ST37,,,,deny,manual,282.36,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-LW241212_HK-XS,,,,,,,,Material,White Halifax Oak,,,,,LW241212_HK-XS-H1176 ST37,,,,deny,manual,282.36,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
-Cuppowood-LW271212_HK-XS,LW271212_HK-XS,,,Furniture > Cabinets & Storage > Kitchen Cabinets,Lift Up Door_Wall Cabinet,,,Material,Pearl White HG,,,,,LW271212_HK-XS-MDPE3004-181S90,,,,deny,manual,301.54,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/LW_HK-XS-EWLHX.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
+Cuppowood-LW271212_HK-XS,"Lift Up Door Wall Cabinet with HK-XS 27""W 12""H 12""D (LW271212_HK-XS)","Depth: 12, Height: 12, Width: 27",,Furniture > Cabinets & Storage > Kitchen Cabinets,Wall Cabinet,"Lift Up Door Wall Cabinet, 27W, 12H, D12D, HK-XS",,Material,Pearl White HG,,,,,LW271212_HK-XS-MDPE3004-181S90,,,,deny,manual,301.54,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/LW_HK-XS-EWLHX.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
 Cuppowood-LW271212_HK-XS,,,,,,,,Material,Winter Frost SM,,,,,LW271212_HK-XS-MDPE3035-181S36,,,,deny,manual,301.54,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-LW271212_HK-XS,,,,,,,,Material,Sun Grey HG,,,,,LW271212_HK-XS-MDPE3033-181S90,,,,deny,manual,301.54,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-LW271212_HK-XS,,,,,,,,Material,Sun Grey SM,,,,,LW271212_HK-XS-MDPE3033-181S36,,,,deny,manual,301.54,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
@@ -279,7 +279,7 @@ Cuppowood-LW271212_HK-XS,,,,,,,,Material,Tobacco Halifax Oak,,,,,LW271212_HK-XS-
 Cuppowood-LW271212_HK-XS,,,,,,,,Material,Black Halifax Oak,,,,,LW271212_HK-XS-H3182 ST37,,,,deny,manual,301.54,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-LW271212_HK-XS,,,,,,,,Material,Natural Halifax Oak,,,,,LW271212_HK-XS-H1180 ST37,,,,deny,manual,301.54,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-LW271212_HK-XS,,,,,,,,Material,White Halifax Oak,,,,,LW271212_HK-XS-H1176 ST37,,,,deny,manual,301.54,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
-Cuppowood-MWB27,MWB27,,,Furniture > Cabinets & Storage > Kitchen Cabinets,Microwave Cabinet,,,Material,Pearl White HG,,,,,MWB27-MDPE3004-181S90,,,,deny,manual,632.05,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/MWB-EBRMW.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
+Cuppowood-MWB27,"Microwave Base Cabinet 27""W 34.5""H 24""D (MWB27)","Depth: 24, Height: 34.5, Width: 27",,Furniture > Cabinets & Storage > Kitchen Cabinets,Base Cabinet,"Microwave Base Cabinet, 27W, 34.5H, 24D",,Material,Pearl White HG,,,,,MWB27-MDPE3004-181S90,,,,deny,manual,632.05,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/MWB-EBRMW.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
 Cuppowood-MWB27,,,,,,,,Material,Winter Frost SM,,,,,MWB27-MDPE3035-181S36,,,,deny,manual,632.05,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-MWB27,,,,,,,,Material,Sun Grey HG,,,,,MWB27-MDPE3033-181S90,,,,deny,manual,632.05,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-MWB27,,,,,,,,Material,Sun Grey SM,,,,,MWB27-MDPE3033-181S36,,,,deny,manual,632.05,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
@@ -319,7 +319,7 @@ Cuppowood-MWB27,,,,,,,,Material,Tobacco Halifax Oak,,,,,MWB27-H1181 ST37,,,,deny
 Cuppowood-MWB27,,,,,,,,Material,Black Halifax Oak,,,,,MWB27-H3182 ST37,,,,deny,manual,632.05,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-MWB27,,,,,,,,Material,Natural Halifax Oak,,,,,MWB27-H1180 ST37,,,,deny,manual,632.05,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-MWB27,,,,,,,,Material,White Halifax Oak,,,,,MWB27-H1176 ST37,,,,deny,manual,632.05,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
-Cuppowood-MWB30,MWB30,,,Furniture > Cabinets & Storage > Kitchen Cabinets,Microwave Cabinet,,,Material,Pearl White HG,,,,,MWB30-MDPE3004-181S90,,,,deny,manual,648.26,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/MWB-EBRMW.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
+Cuppowood-MWB30,"Microwave Base Cabinet 30""W 34.5""H 24""D (MWB30)","Depth: 24, Height: 34.5, Width: 30",,Furniture > Cabinets & Storage > Kitchen Cabinets,Base Cabinet,"Microwave Base Cabinet, 30W, 34.5H, 24D",,Material,Pearl White HG,,,,,MWB30-MDPE3004-181S90,,,,deny,manual,648.26,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/MWB-EBRMW.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
 Cuppowood-MWB30,,,,,,,,Material,Winter Frost SM,,,,,MWB30-MDPE3035-181S36,,,,deny,manual,648.26,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-MWB30,,,,,,,,Material,Sun Grey HG,,,,,MWB30-MDPE3033-181S90,,,,deny,manual,648.26,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-MWB30,,,,,,,,Material,Sun Grey SM,,,,,MWB30-MDPE3033-181S36,,,,deny,manual,648.26,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
@@ -359,7 +359,7 @@ Cuppowood-MWB30,,,,,,,,Material,Tobacco Halifax Oak,,,,,MWB30-H1181 ST37,,,,deny
 Cuppowood-MWB30,,,,,,,,Material,Black Halifax Oak,,,,,MWB30-H3182 ST37,,,,deny,manual,648.26,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-MWB30,,,,,,,,Material,Natural Halifax Oak,,,,,MWB30-H1180 ST37,,,,deny,manual,648.26,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-MWB30,,,,,,,,Material,White Halifax Oak,,,,,MWB30-H1176 ST37,,,,deny,manual,648.26,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
-Cuppowood-OVPC 308424,OVPC 308424,,,Furniture > Cabinets & Storage > Kitchen Cabinets,Microwave Cabinet,,,Material,Pearl White HG,,,,,OVPC 308424-MDPE3004-181S90,,,,deny,manual,1640.98,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/OVPC-EPTOV.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
+Cuppowood-OVPC 308424,"Oven Pantry 30""W 84""H 24""D (OVPC 308424)","Depth: 24, Height: 84, Width: 30",,Furniture > Cabinets & Storage > Kitchen Cabinets,Pantry,"Oven Pantry, 30W, 84H, D24D",,Material,Pearl White HG,,,,,OVPC 308424-MDPE3004-181S90,,,,deny,manual,1640.98,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/OVPC-EPTOV.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
 Cuppowood-OVPC 308424,,,,,,,,Material,Winter Frost SM,,,,,OVPC 308424-MDPE3035-181S36,,,,deny,manual,1640.98,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-OVPC 308424,,,,,,,,Material,Sun Grey HG,,,,,OVPC 308424-MDPE3033-181S90,,,,deny,manual,1640.98,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-OVPC 308424,,,,,,,,Material,Sun Grey SM,,,,,OVPC 308424-MDPE3033-181S36,,,,deny,manual,1640.98,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
@@ -399,7 +399,7 @@ Cuppowood-OVPC 308424,,,,,,,,Material,Tobacco Halifax Oak,,,,,OVPC 308424-H1181 
 Cuppowood-OVPC 308424,,,,,,,,Material,Black Halifax Oak,,,,,OVPC 308424-H3182 ST37,,,,deny,manual,1640.98,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-OVPC 308424,,,,,,,,Material,Natural Halifax Oak,,,,,OVPC 308424-H1180 ST37,,,,deny,manual,1640.98,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-OVPC 308424,,,,,,,,Material,White Halifax Oak,,,,,OVPC 308424-H1176 ST37,,,,deny,manual,1640.98,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
-Cuppowood-OVPC 309024,OVPC 309024,,,Furniture > Cabinets & Storage > Kitchen Cabinets,Microwave Cabinet,,,Material,Pearl White HG,,,,,OVPC 309024-MDPE3004-181S90,,,,deny,manual,1657.64,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/OVPC-EPTOV.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
+Cuppowood-OVPC 309024,"Oven Pantry 30""W 90""H 24""D (OVPC 309024)","Depth: 24, Height: 90, Width: 30",,Furniture > Cabinets & Storage > Kitchen Cabinets,Pantry,"Oven Pantry, 30W, 90H, D24D",,Material,Pearl White HG,,,,,OVPC 309024-MDPE3004-181S90,,,,deny,manual,1657.64,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/OVPC-EPTOV.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
 Cuppowood-OVPC 309024,,,,,,,,Material,Winter Frost SM,,,,,OVPC 309024-MDPE3035-181S36,,,,deny,manual,1657.64,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-OVPC 309024,,,,,,,,Material,Sun Grey HG,,,,,OVPC 309024-MDPE3033-181S90,,,,deny,manual,1657.64,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-OVPC 309024,,,,,,,,Material,Sun Grey SM,,,,,OVPC 309024-MDPE3033-181S36,,,,deny,manual,1657.64,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
@@ -439,7 +439,7 @@ Cuppowood-OVPC 309024,,,,,,,,Material,Tobacco Halifax Oak,,,,,OVPC 309024-H1181 
 Cuppowood-OVPC 309024,,,,,,,,Material,Black Halifax Oak,,,,,OVPC 309024-H3182 ST37,,,,deny,manual,1657.64,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-OVPC 309024,,,,,,,,Material,Natural Halifax Oak,,,,,OVPC 309024-H1180 ST37,,,,deny,manual,1657.64,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-OVPC 309024,,,,,,,,Material,White Halifax Oak,,,,,OVPC 309024-H1176 ST37,,,,deny,manual,1657.64,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
-Cuppowood-OVPC 309624,OVPC 309624,,,Furniture > Cabinets & Storage > Kitchen Cabinets,Microwave Cabinet,,,Material,Pearl White HG,,,,,OVPC 309624-MDPE3004-181S90,,,,deny,manual,1712.92,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/OVPC-EPTOV.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
+Cuppowood-OVPC 309624,"Oven Pantry 30""W 96""H 24""D (OVPC 309624)","Depth: 24, Height: 96, Width: 30",,Furniture > Cabinets & Storage > Kitchen Cabinets,Pantry,"Oven Pantry, 30W, 96H, D24D",,Material,Pearl White HG,,,,,OVPC 309624-MDPE3004-181S90,,,,deny,manual,1712.92,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/OVPC-EPTOV.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
 Cuppowood-OVPC 309624,,,,,,,,Material,Winter Frost SM,,,,,OVPC 309624-MDPE3035-181S36,,,,deny,manual,1712.92,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-OVPC 309624,,,,,,,,Material,Sun Grey HG,,,,,OVPC 309624-MDPE3033-181S90,,,,deny,manual,1712.92,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-OVPC 309624,,,,,,,,Material,Sun Grey SM,,,,,OVPC 309624-MDPE3033-181S36,,,,deny,manual,1712.92,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
@@ -479,7 +479,7 @@ Cuppowood-OVPC 309624,,,,,,,,Material,Tobacco Halifax Oak,,,,,OVPC 309624-H1181 
 Cuppowood-OVPC 309624,,,,,,,,Material,Black Halifax Oak,,,,,OVPC 309624-H3182 ST37,,,,deny,manual,1712.92,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-OVPC 309624,,,,,,,,Material,Natural Halifax Oak,,,,,OVPC 309624-H1180 ST37,,,,deny,manual,1712.92,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-OVPC 309624,,,,,,,,Material,White Halifax Oak,,,,,OVPC 309624-H1176 ST37,,,,deny,manual,1712.92,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
-Cuppowood-OVB24,OVB24,,,Furniture > Cabinets & Storage > Kitchen Cabinets,Oven Cabinet,,,Material,Pearl White HG,,,,,OVB24-MDPE3004-181S90,,,,deny,manual,466.77,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/OVB-EBROV.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
+Cuppowood-OVB24,"Oven Base Cabinet 24""W 34.5""H 24""D (OVB24)","Depth: 24, Height: 34.5, Width: 24",,Furniture > Cabinets & Storage > Kitchen Cabinets,Base Cabinet,"Oven Base Cabinet, 24W, 34.5H, 24D",,Material,Pearl White HG,,,,,OVB24-MDPE3004-181S90,,,,deny,manual,466.77,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/OVB-EBROV.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
 Cuppowood-OVB24,,,,,,,,Material,Winter Frost SM,,,,,OVB24-MDPE3035-181S36,,,,deny,manual,466.77,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-OVB24,,,,,,,,Material,Sun Grey HG,,,,,OVB24-MDPE3033-181S90,,,,deny,manual,466.77,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-OVB24,,,,,,,,Material,Sun Grey SM,,,,,OVB24-MDPE3033-181S36,,,,deny,manual,466.77,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
@@ -519,7 +519,7 @@ Cuppowood-OVB24,,,,,,,,Material,Tobacco Halifax Oak,,,,,OVB24-H1181 ST37,,,,deny
 Cuppowood-OVB24,,,,,,,,Material,Black Halifax Oak,,,,,OVB24-H3182 ST37,,,,deny,manual,466.77,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-OVB24,,,,,,,,Material,Natural Halifax Oak,,,,,OVB24-H1180 ST37,,,,deny,manual,466.77,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-OVB24,,,,,,,,Material,White Halifax Oak,,,,,OVB24-H1176 ST37,,,,deny,manual,466.77,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
-Cuppowood-OVB27,OVB27,,,Furniture > Cabinets & Storage > Kitchen Cabinets,Oven Cabinet,,,Material,Pearl White HG,,,,,OVB27-MDPE3004-181S90,,,,deny,manual,546.08,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/OVB-EBROV.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
+Cuppowood-OVB27,"Oven Base Cabinet 27""W 34.5""H 24""D (OVB27)","Depth: 24, Height: 34.5, Width: 27",,Furniture > Cabinets & Storage > Kitchen Cabinets,Base Cabinet,"Oven Base Cabinet, 27W, 34.5H, 24D",,Material,Pearl White HG,,,,,OVB27-MDPE3004-181S90,,,,deny,manual,546.08,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/OVB-EBROV.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
 Cuppowood-OVB27,,,,,,,,Material,Winter Frost SM,,,,,OVB27-MDPE3035-181S36,,,,deny,manual,546.08,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-OVB27,,,,,,,,Material,Sun Grey HG,,,,,OVB27-MDPE3033-181S90,,,,deny,manual,546.08,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-OVB27,,,,,,,,Material,Sun Grey SM,,,,,OVB27-MDPE3033-181S36,,,,deny,manual,546.08,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
@@ -559,7 +559,7 @@ Cuppowood-OVB27,,,,,,,,Material,Tobacco Halifax Oak,,,,,OVB27-H1181 ST37,,,,deny
 Cuppowood-OVB27,,,,,,,,Material,Black Halifax Oak,,,,,OVB27-H3182 ST37,,,,deny,manual,546.08,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-OVB27,,,,,,,,Material,Natural Halifax Oak,,,,,OVB27-H1180 ST37,,,,deny,manual,546.08,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-OVB27,,,,,,,,Material,White Halifax Oak,,,,,OVB27-H1176 ST37,,,,deny,manual,546.08,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
-Cuppowood-OVB30,OVB30,,,Furniture > Cabinets & Storage > Kitchen Cabinets,Oven Cabinet,,,Material,Pearl White HG,,,,,OVB30-MDPE3004-181S90,,,,deny,manual,562.29,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/OVB-EBROV.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
+Cuppowood-OVB30,"Oven Base Cabinet 30""W 34.5""H 24""D (OVB30)","Depth: 24, Height: 34.5, Width: 30",,Furniture > Cabinets & Storage > Kitchen Cabinets,Base Cabinet,"Oven Base Cabinet, 30W, 34.5H, 24D",,Material,Pearl White HG,,,,,OVB30-MDPE3004-181S90,,,,deny,manual,562.29,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/OVB-EBROV.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
 Cuppowood-OVB30,,,,,,,,Material,Winter Frost SM,,,,,OVB30-MDPE3035-181S36,,,,deny,manual,562.29,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-OVB30,,,,,,,,Material,Sun Grey HG,,,,,OVB30-MDPE3033-181S90,,,,deny,manual,562.29,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-OVB30,,,,,,,,Material,Sun Grey SM,,,,,OVB30-MDPE3033-181S36,,,,deny,manual,562.29,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
@@ -599,7 +599,7 @@ Cuppowood-OVB30,,,,,,,,Material,Tobacco Halifax Oak,,,,,OVB30-H1181 ST37,,,,deny
 Cuppowood-OVB30,,,,,,,,Material,Black Halifax Oak,,,,,OVB30-H3182 ST37,,,,deny,manual,562.29,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-OVB30,,,,,,,,Material,Natural Halifax Oak,,,,,OVB30-H1180 ST37,,,,deny,manual,562.29,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-OVB30,,,,,,,,Material,White Halifax Oak,,,,,OVB30-H1176 ST37,,,,deny,manual,562.29,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
-Cuppowood-KND300624,KND300624,,,Furniture > Cabinets & Storage > Kitchen Cabinets,Knee Drawer,,,Material,Pearl White HG,,,,,KND300624-MDPE3004-181S90,,,,deny,manual,310.83,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/KND-EBRKN.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
+Cuppowood-KND300624,"Knee Drawer Cabinet 30""W 34.5""H 24""D (KND300624)","Depth: 24, Height: 34.5, Width: 30",,Furniture > Cabinets & Storage > Kitchen Cabinets,Base Cabinet,"Knee Drawer Cabinet, W30, H34.5, D24",,Material,Pearl White HG,,,,,KND300624-MDPE3004-181S90,,,,deny,manual,310.83,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/KND-EBRKN.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
 Cuppowood-KND300624,,,,,,,,Material,Winter Frost SM,,,,,KND300624-MDPE3035-181S36,,,,deny,manual,310.83,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-KND300624,,,,,,,,Material,Sun Grey HG,,,,,KND300624-MDPE3033-181S90,,,,deny,manual,310.83,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-KND300624,,,,,,,,Material,Sun Grey SM,,,,,KND300624-MDPE3033-181S36,,,,deny,manual,310.83,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
@@ -639,7 +639,7 @@ Cuppowood-KND300624,,,,,,,,Material,Tobacco Halifax Oak,,,,,KND300624-H1181 ST37
 Cuppowood-KND300624,,,,,,,,Material,Black Halifax Oak,,,,,KND300624-H3182 ST37,,,,deny,manual,310.83,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-KND300624,,,,,,,,Material,Natural Halifax Oak,,,,,KND300624-H1180 ST37,,,,deny,manual,310.83,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-KND300624,,,,,,,,Material,White Halifax Oak,,,,,KND300624-H1176 ST37,,,,deny,manual,310.83,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
-Cuppowood-KND330624,KND330624,,,Furniture > Cabinets & Storage > Kitchen Cabinets,Knee Drawer,,,Material,Pearl White HG,,,,,KND330624-MDPE3004-181S90,,,,deny,manual,332.91,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/KND-EBRKN.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
+Cuppowood-KND330624,"Knee Drawer Cabinet 33""W 34.5""H 24""D (KND330624)","Depth: 24, Height: 34.5, Width: 33",,Furniture > Cabinets & Storage > Kitchen Cabinets,Base Cabinet,"Knee Drawer Cabinet, W33, H34.5, D24",,Material,Pearl White HG,,,,,KND330624-MDPE3004-181S90,,,,deny,manual,332.91,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/KND-EBRKN.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
 Cuppowood-KND330624,,,,,,,,Material,Winter Frost SM,,,,,KND330624-MDPE3035-181S36,,,,deny,manual,332.91,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-KND330624,,,,,,,,Material,Sun Grey HG,,,,,KND330624-MDPE3033-181S90,,,,deny,manual,332.91,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-KND330624,,,,,,,,Material,Sun Grey SM,,,,,KND330624-MDPE3033-181S36,,,,deny,manual,332.91,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
@@ -679,7 +679,7 @@ Cuppowood-KND330624,,,,,,,,Material,Tobacco Halifax Oak,,,,,KND330624-H1181 ST37
 Cuppowood-KND330624,,,,,,,,Material,Black Halifax Oak,,,,,KND330624-H3182 ST37,,,,deny,manual,332.91,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-KND330624,,,,,,,,Material,Natural Halifax Oak,,,,,KND330624-H1180 ST37,,,,deny,manual,332.91,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-KND330624,,,,,,,,Material,White Halifax Oak,,,,,KND330624-H1176 ST37,,,,deny,manual,332.91,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
-Cuppowood-KND360624,KND360624,,,Furniture > Cabinets & Storage > Kitchen Cabinets,Knee Drawer,,,Material,Pearl White HG,,,,,KND360624-MDPE3004-181S90,,,,deny,manual,344.57,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/KND-EBRKN.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
+Cuppowood-KND360624,"Knee Drawer Cabinet 36""W 34.5""H 24""D (KND360624)","Depth: 24, Height: 34.5, Width: 36",,Furniture > Cabinets & Storage > Kitchen Cabinets,Base Cabinet,"Knee Drawer Cabinet, W36, H34.5, D24",,Material,Pearl White HG,,,,,KND360624-MDPE3004-181S90,,,,deny,manual,344.57,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/KND-EBRKN.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
 Cuppowood-KND360624,,,,,,,,Material,Winter Frost SM,,,,,KND360624-MDPE3035-181S36,,,,deny,manual,344.57,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-KND360624,,,,,,,,Material,Sun Grey HG,,,,,KND360624-MDPE3033-181S90,,,,deny,manual,344.57,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-KND360624,,,,,,,,Material,Sun Grey SM,,,,,KND360624-MDPE3033-181S36,,,,deny,manual,344.57,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
@@ -719,7 +719,7 @@ Cuppowood-KND360624,,,,,,,,Material,Tobacco Halifax Oak,,,,,KND360624-H1181 ST37
 Cuppowood-KND360624,,,,,,,,Material,Black Halifax Oak,,,,,KND360624-H3182 ST37,,,,deny,manual,344.57,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-KND360624,,,,,,,,Material,Natural Halifax Oak,,,,,KND360624-H1180 ST37,,,,deny,manual,344.57,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-KND360624,,,,,,,,Material,White Halifax Oak,,,,,KND360624-H1176 ST37,,,,deny,manual,344.57,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
-Cuppowood-1DB27,1DB27,,,Furniture > Cabinets & Storage > Kitchen Cabinets,Drawer Base,,,Material,Pearl White HG,,,,,1DB27-MDPE3004-181S90,,,,deny,manual,314.49,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/1DB-EBDW1.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
+Cuppowood-1DB27,"1 Drawer Base Cabinet 27""W 34.5""H 24""D (1DB27)","Depth: 24, Height: 34.5, Width: 27",,Furniture > Cabinets & Storage > Kitchen Cabinets,Base Cabinet,"1 Drawer Base Cabinet, Drawer Base Cabinet, 27W, 34.5H, 24D",,Material,Pearl White HG,,,,,1DB27-MDPE3004-181S90,,,,deny,manual,314.49,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/1DB-EBDW1.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
 Cuppowood-1DB27,,,,,,,,Material,Winter Frost SM,,,,,1DB27-MDPE3035-181S36,,,,deny,manual,314.49,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-1DB27,,,,,,,,Material,Sun Grey HG,,,,,1DB27-MDPE3033-181S90,,,,deny,manual,314.49,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-1DB27,,,,,,,,Material,Sun Grey SM,,,,,1DB27-MDPE3033-181S36,,,,deny,manual,314.49,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
@@ -759,7 +759,7 @@ Cuppowood-1DB27,,,,,,,,Material,Tobacco Halifax Oak,,,,,1DB27-H1181 ST37,,,,deny
 Cuppowood-1DB27,,,,,,,,Material,Black Halifax Oak,,,,,1DB27-H3182 ST37,,,,deny,manual,314.49,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-1DB27,,,,,,,,Material,Natural Halifax Oak,,,,,1DB27-H1180 ST37,,,,deny,manual,314.49,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-1DB27,,,,,,,,Material,White Halifax Oak,,,,,1DB27-H1176 ST37,,,,deny,manual,314.49,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
-Cuppowood-1DB30,1DB30,,,Furniture > Cabinets & Storage > Kitchen Cabinets,Drawer Base,,,Material,Pearl White HG,,,,,1DB30-MDPE3004-181S90,,,,deny,manual,328.23,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/1DB-EBDW1.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
+Cuppowood-1DB30,"1 Drawer Base Cabinet 30""W 34.5""H 24""D (1DB30)","Depth: 24, Height: 34.5, Width: 30",,Furniture > Cabinets & Storage > Kitchen Cabinets,Base Cabinet,"1 Drawer Base Cabinet, Drawer Base Cabinet, 30W, 34.5H, 24D",,Material,Pearl White HG,,,,,1DB30-MDPE3004-181S90,,,,deny,manual,328.23,,TRUE,TRUE,,https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/1DB-EBDW1.jpg,,,,,,,,,,,,,,,,,,,,g,,,,,active
 Cuppowood-1DB30,,,,,,,,Material,Winter Frost SM,,,,,1DB30-MDPE3035-181S36,,,,deny,manual,328.23,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-1DB30,,,,,,,,Material,Sun Grey HG,,,,,1DB30-MDPE3033-181S90,,,,deny,manual,328.23,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,
 Cuppowood-1DB30,,,,,,,,Material,Sun Grey SM,,,,,1DB30-MDPE3033-181S36,,,,deny,manual,328.23,,TRUE,TRUE,,,,,,,,,,,,,,,,,,,,,,g,,,,,

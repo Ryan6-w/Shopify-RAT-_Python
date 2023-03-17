@@ -2,18 +2,6 @@ import pandas as pd
 from openpyxl import Workbook
 import os
 
-# # result[0] 为字母
-# def substring_until_number(s):
-#     result = ""
-#     for i in s:
-#         if s[0].isdigit():
-#             return "DB"
-#         if i.isdigit():
-#             break
-#         result += i
-#     return result
-
-# except base
 def seperateSKU(s):
     numString = ""
     for i in s:
@@ -21,6 +9,10 @@ def seperateSKU(s):
             numString+=i
             
     return numString
+
+def tagFormat(s):
+    return s.replace(' ', '_').replace('\"',"_").lower()
+
 
 colorPath = pd.ExcelFile('/Users/ryanweng/Documents/Cuppowood/website/产品导入/Adroit Stocked Color info.xlsx')
 productPath = pd.ExcelFile('/Users/ryanweng/Documents/Cuppowood/website/产品导入/CNG_Cabinet_ Data.xlsx')
@@ -110,12 +102,12 @@ for productRow in productList:
     else:
         numString =seperateSKU(productRow[0])
     
+    # 如果要改下面的，还需要改其他2个地方，一个是base cabinet 一个是knee drawer
     width = numString[:2]
     height = numString[2:4]
     depth = numString[4:6]
-    tempTitle = f"{width}\"{height}\"{depth}\" ({productRow[0]})"
-    tempTag = f"W{width}, H{height}, D{depth}"
-    
+    tempTitle = f"{width}\"W {height}\"H {depth}\"D ({productRow[0]})"
+    tempTag = f"{width}W, {height}H, D{depth}D"
     pDes = "Depth: "+ depth +", Height: "+ height + ", Width: "+ width
 
     if tempSKU[3:5] == "EW":
@@ -124,53 +116,54 @@ for productRow in productList:
         if tempSKU[3:6]== "EWR":
             if int(depth) ==24:
                 tempType = "Refrigerator Wall Cabinet"
-                pTag = f"{tempType}, {tempTag}" 
+                pTag = f"{tagFormat(tempType)}, {tempTag}" 
                 pTitle = f"{tempType} {tempTitle}"
             elif 30<=int(height)<=42:
                 tempType = "High Wall Cabinet"
-                pTag = f"{height}\" {tempType}, {tempTag}"
+                pTag = f"{height}\"{tagFormat(tempType)}, {tempTag}"
                 pTitle = f"{height}\" {tempType} {tempTitle}"
             elif int(height)<30:
                 tempType = "Standard Hight Wall Cabinet"
-                pTag = f"{tempType}, {tempTag}"
+                pTag = f"{tagFormat(tempType)}, {tempTag}"
                 pTitle = f"{tempType} {tempTitle}"
             elif 48<=int(height):
                 tempType = "Standing Wall Cabinet"
-                pTag = f"{tempType}, {tempTag}"
+                pTag = f"{tagFormat(tempType)}, {tempTag}"
                 pTitle = f"{tempType} {tempTitle}"
 
         elif tempSKU[3:6] == "EWL":
             #K2,HX, HK
+            mainType = "Lift Up Door Wall Cabinet"
             if tempSKU[-2:] =="K2":
                 tempType = "Standard Lift Up Door Wall Cabinet"
-                pTag = f"{tempType}, {tempTag}"
+                pTag = f"{tagFormat(tempType)}, {tempTag}, {tagFormat(mainType)}"
                 pTitle = f"{tempType} {tempTitle}"
             elif tempSKU[-2:] =="HX":
-                tempType = "Lift Up Door Wall Cabinet"
-                pTag = f"{tempType}, {tempTag}, HK-XS"
+                tempType = "Lift Up Door Wall Cabinet HK-XS"
+                pTag = f"{tagFormat(tempType)}, {tempTag}, {tagFormat(mainType)}"
                 pTitle = f"{tempType} with HK-XS {tempTitle}"
             elif tempSKU[-2:] =="HK":
-                tempType = "Lift Up Door Wall Cabinet"
-                pTag = f"{tempType}, {tempTag}, HK-Top"
+                tempType = "Lift Up Door Wall Cabinet HK-Top"
+                pTag = f"{tagFormat(tempType)}, {tempTag}, {tagFormat(mainType)}"
                 pTitle = f"{tempType} with HK-Top {tempTitle}"
 
         elif tempSKU[3:6] == "EWC":
             #DR, PR
             if tempSKU[-2:] =="DR":
                 tempType = "Diagonal Corner Wall Cabinet"
-                pTag = f"{tempType}, {tempTag}"
+                pTag = f"{tagFormat(tempType)}, {tempTag}, diagonal, corner"
                 pTitle = f"{tempType} {tempTitle}"
             elif tempSKU[-2:] =="PR":
-                tempType = "Pie-Cut Corner Wall Cabinet"
-                pTag = f"{tempType}, {tempTag}"
+                tempType = "Pie Cut Corner Wall Cabinet"
+                pTag = f"{tagFormat(tempType)}, {tempTag}, pie_cut, corner"
                 pTitle = f"{tempType} {tempTitle}"
                 
         elif tempSKU[3:6] == "EWB":
             tempType = "Blind Corner Wall Cabinet"
-            pTag = f"{tempType}, {tempTag}"
+            pTag = f"{tagFormat(tempType)}, {tempTag}, blind, corner"
             pTitle = f"{tempType} {tempTitle}"
-        # print(f"tag: {pTag}")
-        # print(f"title: {pTitle}")
+        print(f"tag: {pTag}")
+        print(f"title: {pTitle}")
 
     elif(productRow[9][3:5] == "EP"):
         pType = "Pantry"
@@ -178,16 +171,16 @@ for productRow in productList:
         if tempSKU[-2:]!= "OV":
             tempType = f"{depth}\" Deep Pantry"
             if tempSKU[-2:] == "PT":
-                pTag = f"{tempType}, {tempTag}" 
+                pTag = f"{tagFormat(tempType)}, {tempTag}" 
                 pTitle = f"{tempType} {tempTitle}"
             elif tempSKU[-2:] == "R3":
-                pTag = f"{tempType}, {tempTag}, 3RO" 
+                pTag = f"{tagFormat(tempType)}, {tempTag}, 3RO" 
                 pTitle = f"{tempType} (3RO) {tempTitle}"
             elif tempSKU[-2:] == "R4":
-                pTag = f"{tempType}, {tempTag}, 4RO" 
+                pTag = f"{tagFormat(tempType)}, {tempTag}, 4RO" 
                 pTitle = f"{tempType} (4RO) {tempTitle}"
             elif tempSKU[-2:] == "FD":
-                pTag = f"{tempType}, {tempTag}, FHD" 
+                pTag = f"{tagFormat(tempType)}, {tempTag}, FHD" 
                 pTitle = f"{tempType} (FHD) {tempTitle}"
         elif tempSKU[-2:] =="OV":
             tempType = "Oven Pantry"
@@ -200,10 +193,11 @@ for productRow in productList:
     elif(productRow[9][3:5] == "EB"):
         pType = "Base Cabinet"
         width = numString[:2]
-        height = 34.5
-        depth = 24
-        tempTitle = f"{width}\" ({productRow[0]})"
-        tempTag = f"W{width}"
+        height = "34.5"
+        depth = "24"
+        tempTitle = f"{width}\"W {height}\"H {depth}\"D ({productRow[0]})"
+        tempTag = f"{width}W, {height}H, {depth}D"
+        pDes = "Depth: "+ depth +", Height: "+ height + ", Width: "+ width
         if tempSKU[3:6]== "EBD":
             tempType = "Drawer Base Cabinet"
             if tempSKU[-2:] == "W1":
@@ -297,7 +291,7 @@ for productRow in productList:
                 pTitle = f"Microwave {tempType} {tempTitle}"
             elif tempSKU[-2:]== "KN":
                 pTag = f"Knee Drawer Cabinet, W{width}, H{height}, D{depth}" 
-                pTitle = f"Knee Drawer Cabinet {width}\"{height}\"{depth}\" ({productRow[0]})"
+                pTitle = f"Knee Drawer Cabinet {width}\"W {height}\"H {depth}\" ({productRow[0]})"
         elif tempSKU[3:6]== "EBF":
             tempType = "Base Cabinet"
             if tempSKU[-2:]== "BF":
@@ -330,42 +324,42 @@ for productRow in productList:
 
 
 
-    # worksheet.cell(row=insertRow, column=2, value=pTitle)
-    # worksheet.cell(row=insertRow,column=7,value="active")
-    # worksheet.cell(row=insertRow,column=13,value=productRow[1]) 
-    # worksheet.cell(row=insertRow,column=15,value=pTag) 
-    # worksheet.cell(row=insertRow,column=16,value="Furniture > Cabinets & Storage > Kitchen Cabinets") 
-    # worksheet.cell(row=insertRow,column=17,value=pType) 
-    # worksheet.cell(row=insertRow,column=18,value=pDes) 
+    worksheet.cell(row=insertRow, column=2, value=pTitle)
+    worksheet.cell(row=insertRow,column=7,value="active")
+    worksheet.cell(row=insertRow,column=13,value=productRow[1]) 
+    worksheet.cell(row=insertRow,column=15,value=pTag) 
+    worksheet.cell(row=insertRow,column=16,value="Furniture > Cabinets & Storage > Kitchen Cabinets") 
+    worksheet.cell(row=insertRow,column=17,value=pType) 
+    worksheet.cell(row=insertRow,column=18,value=pDes) 
 
 
-#     for colorRow in colorsList:
-#         worksheet.cell(row=insertRow, column=4, value=colorRow[0])
-#         worksheet.cell(row=insertRow, column=1, value="Cuppowood-"+ str(productRow[0]))
-#         worksheet.cell(row=insertRow,column=3,value="Material")
+    for colorRow in colorsList:
+        worksheet.cell(row=insertRow, column=4, value=colorRow[0])
+        worksheet.cell(row=insertRow, column=1, value="Cuppowood-"+ str(productRow[0]))
+        worksheet.cell(row=insertRow,column=3,value="Material")
 
-#         worksheet.cell(row=insertRow,column=5,value=str(productRow[0])+"-"+str(colorRow[1]))
-#         if(colorRow[2] == 'A'):
-#             price = round(productRow[2]+productRow[3],2)
-#         elif (colorRow[2] == 'B'):
-#             price = round(productRow[2]+productRow[4],2)
-#         elif (colorRow[2] == 'C'):
-#             price = round(productRow[2]+productRow[5],2)
-#         elif (colorRow[2] == 'D'):
-#             price = round(productRow[2]+productRow[6],2)
-#         elif (colorRow[2] == 'E'):
-#             price = round(productRow[2]+productRow[7],2)
-#         elif (colorRow[2] == 'F'):
-#             price = round(productRow[2]+productRow[8],2)
-#         else:
-#             price =0
-#         worksheet.cell(row=insertRow,column=6,value= price)
-#         worksheet.cell(row=insertRow,column=8,value="deny")
-#         worksheet.cell(row=insertRow,column=9,value="manual")
-#         worksheet.cell(row=insertRow,column=10,value="TRUE")
-#         worksheet.cell(row=insertRow,column=11,value="TRUE")
-#         worksheet.cell(row=insertRow,column=12,value="g")
-#         insertRow +=1
+        worksheet.cell(row=insertRow,column=5,value=str(productRow[0])+"-"+str(colorRow[1]))
+        if(colorRow[2] == 'A'):
+            price = round(productRow[2]+productRow[3],2)
+        elif (colorRow[2] == 'B'):
+            price = round(productRow[2]+productRow[4],2)
+        elif (colorRow[2] == 'C'):
+            price = round(productRow[2]+productRow[5],2)
+        elif (colorRow[2] == 'D'):
+            price = round(productRow[2]+productRow[6],2)
+        elif (colorRow[2] == 'E'):
+            price = round(productRow[2]+productRow[7],2)
+        elif (colorRow[2] == 'F'):
+            price = round(productRow[2]+productRow[8],2)
+        else:
+            price =0
+        worksheet.cell(row=insertRow,column=6,value= price)
+        worksheet.cell(row=insertRow,column=8,value="deny")
+        worksheet.cell(row=insertRow,column=9,value="manual")
+        worksheet.cell(row=insertRow,column=10,value="TRUE")
+        worksheet.cell(row=insertRow,column=11,value="TRUE")
+        worksheet.cell(row=insertRow,column=12,value="g")
+        insertRow +=1
 
-# print("Total removed numbers are: "+ str(count))
-# workbook.save(newExcelPath)
+print("Total removed numbers are: "+ str(count))
+workbook.save(newExcelPath)
