@@ -2,7 +2,7 @@ import csv
 import pandas as pd
 from openpyxl import Workbook
 
-tempURL ="https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Colors/"
+tempURL ="https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Color/"
 color = pd.ExcelFile('/Users/ryanweng/Documents/Cuppowood/website/产品导入/Adroit Stocked Color info.xlsx')
 
 

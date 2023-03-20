@@ -11,7 +11,7 @@ def seperateSKU(s):
     return numString
 
 def tagFormat(s):
-    return s.replace(' ', '_').replace('\"',"_").lower()
+    return s.replace(' ', '_').replace('(','').replace(')','').replace('\"','').lower()
 
 
 colorPath = pd.ExcelFile('/Users/ryanweng/Documents/Cuppowood/website/产品导入/Adroit Stocked Color info.xlsx')
@@ -68,6 +68,8 @@ worksheet.cell(row=1, column=15, value='Tags')
 worksheet.cell(row=1, column=16, value='Product Category') 
 worksheet.cell(row=1, column=17, value='Type') 
 worksheet.cell(row=1, column=18, value='Body (HTML)') 
+worksheet.cell(row=1, column=19, value='Variant Image') 
+
 
 
 # 如果没有价格那么价格是String, 有价格会是float 或者int
@@ -120,7 +122,7 @@ for productRow in productList:
                 pTitle = f"{tempType} {tempTitle}"
             elif 30<=int(height)<=42:
                 tempType = "High Wall Cabinet"
-                pTag = f"{height}\"{tagFormat(tempType)}, {tempTag}"
+                pTag = f"{height}_{tagFormat(tempType)}, {tempTag}"
                 pTitle = f"{height}\" {tempType} {tempTitle}"
             elif int(height)<30:
                 tempType = "Standard Hight Wall Cabinet"
@@ -162,8 +164,8 @@ for productRow in productList:
             tempType = "Blind Corner Wall Cabinet"
             pTag = f"{tagFormat(tempType)}, {tempTag}, blind, corner"
             pTitle = f"{tempType} {tempTitle}"
-        print(f"tag: {pTag}")
-        print(f"title: {pTitle}")
+        # print(f"tag: {pTag}")
+        # print(f"title: {pTitle}")
 
     elif(productRow[9][3:5] == "EP"):
         pType = "Pantry"
@@ -174,17 +176,17 @@ for productRow in productList:
                 pTag = f"{tagFormat(tempType)}, {tempTag}" 
                 pTitle = f"{tempType} {tempTitle}"
             elif tempSKU[-2:] == "R3":
-                pTag = f"{tagFormat(tempType)}, {tempTag}, 3RO" 
+                pTag = f"{tagFormat(tempType)}, {tempTag}, {tagFormat(tempType)}_3_ro" 
                 pTitle = f"{tempType} (3RO) {tempTitle}"
             elif tempSKU[-2:] == "R4":
-                pTag = f"{tagFormat(tempType)}, {tempTag}, 4RO" 
+                pTag = f"{tagFormat(tempType)}, {tempTag}, {tagFormat(tempType)}_4_ro" 
                 pTitle = f"{tempType} (4RO) {tempTitle}"
             elif tempSKU[-2:] == "FD":
-                pTag = f"{tagFormat(tempType)}, {tempTag}, FHD" 
+                pTag = f"{tagFormat(tempType)}, {tempTag}, {tagFormat(tempType)}_fhd, fhd" 
                 pTitle = f"{tempType} (FHD) {tempTitle}"
         elif tempSKU[-2:] =="OV":
             tempType = "Oven Pantry"
-            pTag = f"{tempType}, {tempTag}" 
+            pTag = f"{tagFormat(tempType)}, {tempTag}, oven" 
             pTitle = f"{tempType} {tempTitle}"
         
         # print(f"tag: {pTag}")
@@ -201,123 +203,144 @@ for productRow in productList:
         if tempSKU[3:6]== "EBD":
             tempType = "Drawer Base Cabinet"
             if tempSKU[-2:] == "W1":
-                pTag = f"1 {tempType}, {tempType}, {tempTag}" 
+                pTag = f"1_{tagFormat(tempType)}, {tagFormat(tempType)}, {tempTag}" 
                 pTitle = f"1 {tempType} {tempTitle}"
             elif tempSKU[-2:] == "W2":
-                pTag = f"2 {tempType}, {tempType}, {tempTag}" 
+                pTag = f"2_{tagFormat(tempType)}, {tagFormat(tempType)}, {tempTag}" 
                 pTitle = f"2 {tempType} {tempTitle}"
             elif tempSKU[-2:] == "T1":
-                pTag = f"2 {tempType}, {tempType}, {tempTag}, Top 1RO" 
+                pTag = f"2_{tagFormat(tempType)}, {tagFormat(tempType)}, {tempTag}" 
                 pTitle = f"2 {tempType} (Top 1RO) {tempTitle}"
             elif tempSKU[-2:] == "W3":
-                pTag = f"3 {tempType}, {tempType}, {tempTag}" 
+                pTag = f"3_{tagFormat(tempType)}, {tagFormat(tempType)}, {tempTag}" 
                 pTitle = f"3 {tempType} {tempTitle}"
             elif tempSKU[-2:] == "W4":
-                pTag = f"4 {tempType}, {tempType}, {tempTag}" 
+                pTag = f"4_{tagFormat(tempType)}, {tagFormat(tempType)}, {tempTag}" 
                 pTitle = f"4 {tempType} {tempTitle}"
         elif tempSKU[3:6]== "EBC":
             tempType = "Corner Base Cabinet"
             if tempSKU[-2:] in ("DR","SR"):
-                pTag = f"Diagonal {tempType}, {tempTag}" 
+                pTag = f"diagonal_{tagFormat(tempType)}, {tempTag}, diagonal, corner" 
                 pTitle = f"Diagonal {tempType} {tempTitle}"
             elif tempSKU[-2:] in ("PR","PW","PM"):
-                pTag = f"Pie-Cut  {tempType}, {tempTag}" 
-                pTitle = f"Pie-Cut  {tempType} {tempTitle}"
+                pTag = f"pie_cut_{tagFormat(tempType)}, {tempTag}, pie_cut, corner" 
+                pTitle = f"Pie-Cut {tempType} {tempTitle}"
         elif tempSKU[3:6]== "EBB":
             if tempSKU[-2:]== "FD":
                 tempType = "Blind Base Cabinet (FHD)"
-                pTag = f"{tempType}, {tempTag}" 
+                pTag = f"{tagFormat(tempType)}, {tempTag}, fhd" 
                 pTitle = f"{tempType} {tempTitle}"
             elif tempSKU[-2:]== "BB":
                 tempType = "Blind Base Cabinet"
-                pTag = f"{tempType}, {tempTag} " 
+                pTag = f"{tagFormat(tempType)}, {tempTag}, blind" 
                 pTitle = f"{tempType} (1 Drawer) {tempTitle}"
             elif tempSKU[-2:]== "SR":
                 tempType = "Blind Sink Base Cabinet"
-                pTag = f"{tempType}, {tempTag} " 
+                pTag = f"{tagFormat(tempType)}, {tempTag}, blind, sink" 
                 pTitle = f"{tempType} {tempTitle}"
             elif tempSKU[-2:]== "SF":
                 tempType = "Blind Sink Base Cabinet (FHD)"
-                pTag = f"{tempType}, {tempTag} " 
+                pTag = f"{tagFormat(tempType)}, {tempTag}, blind, sink" 
                 pTitle = f"{tempType} {tempTitle}"
         elif tempSKU[3:6]== "EBS":
             tempType = "Sink Base Cabinet"
             if tempSKU[-2:]== "BS":
-                pTag = f"{tempType}, {tempTag}" 
+                pTag = f"{tagFormat(tempType)}, {tempTag}, sink" 
                 pTitle = f"{tempType} {tempTitle}"
             elif tempSKU[-4:]== "S-R1":
-                pTag = f"{tempType} (1RO), {tempTag}" 
-                pTitle = f"{tempType} (1RO) {tempTitle}"
+                tempType = "Sink Base Cabinet (1RO)"
+                pTag = f"{tagFormat(tempType)}, {tempTag}, sink" 
+                pTitle = f"{tempType} {tempTitle}"
             elif tempSKU[-4:]== "S-R2":
-                pTag = f"{tempType} (2RO), {tempTag}" 
-                pTitle = f"{tempType} (2RO) {tempTitle}"
+                tempType = "Sink Base Cabinet (2RO)"
+                pTag = f"{tagFormat(tempType)}, {tempTag}, sink" 
+                pTitle = f"{tempType} {tempTitle}"
             elif tempSKU[-2:]== "TT":
-                pTag = f"{tempType} (Tilt Out), {tempTag}" 
-                pTitle = f"{tempType} (Tilt Out) {tempTitle}"
+                tempType = "Sink Base Cabinet (Tilt Out)"
+                pTag = f"{tagFormat(tempType)}, {tempTag}, sink" 
+                pTitle = f"{tempType} {tempTitle}"
             elif tempSKU[-2:]== "FD":
-                pTag = f"{tempType} (FHD), {tempTag}" 
-                pTitle = f"{tempType} (FHD) {tempTitle}"
+                tempType = "Sink Base Cabinet (FHD)"
+                pTag = f"{tagFormat(tempType)}, {tempTag}, sink, fhd" 
+                pTitle = f"{tempType} {tempTitle}"
             elif tempSKU[-4:]== "FDR1":
-                pTag = f"{tempType} (FHD BOT 1RO), {tempTag} " 
-                pTitle = f"{tempType} (FHD BOT 1RO) {tempTitle}"
+                tempType = "Sink Base Cabinet (FHD BOT 1RO)"
+                pTag = f"{tagFormat(tempType)}, {tempTag}, sink, fhd" 
+                pTitle = f"{tempType} {tempTitle}"
             elif tempSKU[-4:]== "FDR2":
-                pTag = f"{tempType} (FHD BOT 2RO), {tempTag} " 
-                pTitle = f"{tempType} (FHD BOT 2RO) {tempTitle}"
+                tempType = "Sink Base Cabinet (FHD BOT 2RO)"
+                pTag = f"{tagFormat(tempType)}, {tempTag}, sink, fhd" 
+                pTitle = f"{tempType} {tempTitle}"
             elif tempSKU[-2:]== "FS":
-                pTag = f"Farm {tempType}, {tempTag} " 
-                pTitle = f"Farm {tempType} {tempTitle}"
+                tempType = "Farm Sink Base Cabinet"
+                pTag = f"{tagFormat(tempType)}, {tempTag}, sink" 
+                pTitle = f"{tempType} {tempTitle}"
         elif tempSKU[3:6]== "EBR":
-            tempType = "Base Cabinet"
             if tempSKU[-2:]== "BR":
-                pTag = f"{tempType}, {tempTag}" 
+                tempType = "Base Cabinet"
+                pTag = f"{tagFormat(tempType)}, {tempTag}" 
                 pTitle = f"{tempType} {tempTitle}"
             elif tempSKU[-2:]== "R1":
-                pTag = f"{tempType} (1RO), {tempTag}" 
-                pTitle = f"{tempType} (1RO) {tempTitle}"            
+                tempType = "Base Cabinet (1RO)"
+                pTag = f"{tagFormat(tempType)}, {tempTag}" 
+                pTitle = f"{tempType} {tempTitle}"            
             elif tempSKU[-2:]== "R2":
-                pTag = f"{tempType} (2RO), {tempTag}" 
-                pTitle = f"{tempType} (2RO) {tempTitle}"
+                tempType = "Base Cabinet (2RO)"
+                pTag = f"{tagFormat(tempType)}, {tempTag}" 
+                pTitle = f"{tempType} {tempTitle}"
             elif tempSKU[-2:]== "GP":
-                pTag = f"Pull-Out Basket {tempType}, {tempTag}" 
-                pTitle = f"Pull-Out Basket {tempType} {tempTitle}"            
+                tempType = "Pull-Out Basket Base Cabinet"
+                pTag = f"{tagFormat(tempType)}, {tempTag}, pull_out_basket" 
+                pTitle = f"{tempType} {tempTitle}"            
             elif tempSKU[-2:]== "HM":
-                pTag = f"Hamper Basket {tempType}, {tempTag}" 
-                pTitle = f"Hamper Basket {tempType} {tempTitle}"
+                tempType = "Hamper Basket Base Cabinet"
+                pTag = f"{tagFormat(tempType)}, {tempTag}, hamper_basket" 
+                pTitle = f"{tempType} {tempTitle}"
             elif tempSKU[-2:]== "OV":
-                pTag = f"Oven {tempType}, {tempTag}" 
-                pTitle = f"Oven {tempType} {tempTitle}"            
+                tempType = "Oven Base Cabinet"
+                pTag = f"{tagFormat(tempType)}, {tempTag}, oven" 
+                pTitle = f"{tempType} {tempTitle}"            
             elif tempSKU[-2:]== "MW":
-                pTag = f"Microwave {tempType}, {tempTag}" 
-                pTitle = f"Microwave {tempType} {tempTitle}"
+                tempType = "Microwave Base Cabinet"
+                pTag = f"{tagFormat(tempType)}, {tempTag}, microwave" 
+                pTitle = f"{tempType} {tempTitle}"
             elif tempSKU[-2:]== "KN":
-                pTag = f"Knee Drawer Cabinet, W{width}, H{height}, D{depth}" 
-                pTitle = f"Knee Drawer Cabinet {width}\"W {height}\"H {depth}\" ({productRow[0]})"
+                tempType = "Knee Drawer Cabinet"
+                pTag = f"{tagFormat(tempType)}, {width}W, {height}H, {depth}D" 
+                pTitle = f"{tempType} {width}\"W {height}\"H {depth}\" ({productRow[0]})"
         elif tempSKU[3:6]== "EBF":
-            tempType = "Base Cabinet"
             if tempSKU[-2:]== "BF":
-                pTag = f"{tempType} (FHD), {tempTag}" 
-                pTitle = f"{tempType} (FHD) {tempTitle}"
+                tempType = "Base Cabinet (FHD)"
+                pTag = f"{tagFormat(tempType)}, {tempTag}, fhd" 
+                pTitle = f"{tempType} {tempTitle}"
             elif tempSKU[-2:]== "T1":
-                pTag = f"{tempType} (FHD Top 1RO), {tempTag}" 
-                pTitle = f"{tempType} (FHD Top 1RO) {tempTitle}"   
+                tempType = "Base Cabinet (FHD Top 1RO)"
+                pTag = f"{tagFormat(tempType)}, {tempTag}, fhd" 
+                pTitle = f"{tempType} {tempTitle}"   
             elif tempSKU[-2:]== "R1":
-                pTag = f"{tempType} (FHD BOT 1RO), {tempTag}" 
-                pTitle = f"{tempType} (FHD BOT 1RO) {tempTitle}"         
+                tempType = "Base Cabinet (FHD BOT 1RO)"
+                pTag = f"{tagFormat(tempType)}, {tempTag}, fhd" 
+                pTitle = f"{tempType} {tempTitle}"         
             elif tempSKU[-2:]== "R2":
-                pTag = f"{tempType} (FHD 2RO), {tempTag}" 
-                pTitle = f"{tempType} (FHD 2RO) {tempTitle}"
+                tempType = "Base Cabinet (FHD 2RO)"
+                pTag = f"{tagFormat(tempType)}, {tempTag}, fhd" 
+                pTitle = f"{tempType} {tempTitle}"
             elif tempSKU[-2:]== "R3":
-                pTag = f"{tempType} (FHD 3RO), {tempTag}" 
-                pTitle = f"{tempType} (FHD 3RO) {tempTitle}"
+                tempType = "Base Cabinet (FHD 3RO)"
+                pTag = f"{tagFormat(tempType)}, {tempTag}, fhd" 
+                pTitle = f"{tempType} {tempTitle}"
             elif tempSKU[-2:]== "GP":
-                pTag = f"Pull-Out Basket {tempType} (FHD), {tempTag}" 
-                pTitle = f"Pull-Out Basket {tempType} (FHD) {tempTitle}"   
+                tempType = "Pull-Out Basket Base Cabinet"
+                pTag = f"{tagFormat(tempType)}, {tempTag}, fhd, pull_out_basket" 
+                pTitle = f"{tempType} {tempTitle}"
             elif tempSKU[-2:]== "SP":
-                pTag = f"Pull-Out Basket {tempType} (FHD Spice), {tempTag}" 
-                pTitle = f"Pull-Out Basket {tempType} (FHD Spice) {tempTitle}"   
+                tempType = "Pull-Out Basket Base Cabinet (FHD Spice)"
+                pTag = f"{tagFormat(tempType)}, {tempTag}, fhd, pull_out_basket" 
+                pTitle = f"{tempType} {tempTitle}"
             elif tempSKU[-2:]== "HM":
-                pTag = f"Hamper {tempType} (FHD), {tempTag}" 
-                pTitle = f"Hamper {tempType} (FHD) {tempTitle}"       
+                tempType = "Hamper Base Cabinet (FHD)"
+                pTag = f"{tagFormat(tempType)}, {tempTag}, fhd" 
+                pTitle = f"{tempType} {tempTitle}"       
 
         # print(f"tag: {pTag}")
         # print(f"title: {pTitle}")
