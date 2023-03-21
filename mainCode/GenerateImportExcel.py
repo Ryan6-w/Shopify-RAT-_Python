@@ -1,6 +1,7 @@
 import pandas as pd
 from openpyxl import Workbook
 import os
+import re
 
 def seperateSKU(s):
     numString = ""
@@ -18,15 +19,24 @@ colorPath = pd.ExcelFile('/Users/ryanweng/Documents/Cuppowood/website/产品导�
 productPath = pd.ExcelFile('/Users/ryanweng/Documents/Cuppowood/website/产品导入/CNG_Cabinet_ Data.xlsx')
 newExcelPath = '/Users/ryanweng/Documents/Cuppowood/Python/Testfiles/output.xlsx'
 
+cURL ="https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/"
+cabinetURL ="https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/ConcatPhoto/"
+
+cPhotoPath ="/Users/ryanweng/Documents/Cuppowood/website/产品导入/Shopify/Cabinet/"
+cPhotoName = os.listdir(cPhotoPath)
+
+# just to get the photo name is could
+cabinetPhotoPath ="/Users/ryanweng/Documents/Cuppowood/website/产品导入/Shopify/ConcatPhoto/"
+cabinetPhotoName = os.listdir(cabinetPhotoPath)
+
 # remove the excel file and csv file
 if os.path.exists(newExcelPath):
     os.remove(newExcelPath)
 
-
 # 读取第一个 Excel 文件，提取指定列的数据
 colors = pd.read_excel(colorPath, usecols=['Color name','Panel Code','Price Level'])
 # 读取第二个 Excel 文件，提取指定列的数据
-products= pd.read_excel(productPath, sheet_name='demo1', usecols=['CABINET','URL','COMODO_BOX','A','B','C','D','E','F','SKU'])
+products= pd.read_excel(productPath, sheet_name='demo2', usecols=['CABINET','SKU','COMODO_BOX','A','B','C','D','E','F'])
 
 # 指定要获取值的列名列表
 colorsExtract = ['Color name','Panel Code','Price Level']
@@ -38,7 +48,7 @@ for index, row in colors.iterrows():
     colorsList.append(values)
 
 # 指定要获取值的列名列表
-productExtract = ['CABINET','URL','COMODO_BOX','A','B','C','D','E','F','SKU']
+productExtract = ['CABINET','SKU','COMODO_BOX','A','B','C','D','E','F']
 # 创建一个空列表，用于存储提取的值
 productList = []
 # 遍历每一行，提取指定列的值并添加到列表中；用iterrows 来遍历每一行，index为索引，row 为当前行数
@@ -72,17 +82,12 @@ worksheet.cell(row=1, column=19, value='Variant Image')
 
 
 
-# 如果没有价格那么价格是String, 有价格会是float 或者int
-# for productRow in productList:
-    # print(pTag(productRow[2]))
-
-
 insertRow = 2 
 price = count = depth = height = width = 0
-pTitle = pTag = pType = pDes = tempSKU= ""
+pTitle = pTag = pType = pDes = tempSKU= photoLink = varLink= ""
 
 
-# productList index: 0=sku, 1= url, 2= box price, 3 = A ,4= B, 5=C, 6=D ,7=E ,8 =F , 9= kiSKU
+# productList index: 0=sku, 1=kiSKU, 2= box price, 3 = A ,4= B, 5=C, 6=D ,7=E ,8 =F ,
 # colorsList index: 0=name, 1 =code, 2= price level
 for productRow in productList:
     if not isinstance(productRow[2],(int,float)):
@@ -90,15 +95,15 @@ for productRow in productList:
         productRow =[]
         count +=1
         continue
-    
-    if not isinstance(productRow[1],(str)):
+
+    # if not isinstance(productRow[1],(str)):
+    if not isinstance(productRow[1],(str)) or productRow[1] == '-':
         # print("Product with price but not photo: " + str(productRow[0])) # 不要用Remove 因为list 是有序，会自动向上移,会少读一个产品
         productRow =[]
         count +=1
         continue
     
-
-    tempSKU = productRow[9]
+    tempSKU = productRow[1]
     if productRow[0][0].isnumeric():
         numString = seperateSKU(productRow[0][1:])
     else:
@@ -110,7 +115,7 @@ for productRow in productList:
     depth = numString[4:6]
     tempTitle = f"{width}\"W {height}\"H {depth}\"D ({productRow[0]})"
     tempTag = f"{width}W, {height}H, D{depth}D"
-    pDes = "Depth: "+ depth +", Height: "+ height + ", Width: "+ width
+    pDes = "Width:"+ width+ ", Depth:"+ depth +", Height:"+ height 
 
     if tempSKU[3:5] == "EW":
         pType = "Wall Cabinet"
@@ -167,7 +172,7 @@ for productRow in productList:
         # print(f"tag: {pTag}")
         # print(f"title: {pTitle}")
 
-    elif(productRow[9][3:5] == "EP"):
+    elif(productRow[1][3:5] == "EP"):
         pType = "Pantry"
 
         if tempSKU[-2:]!= "OV":
@@ -192,14 +197,14 @@ for productRow in productList:
         # print(f"tag: {pTag}")
         # print(f"title: {pTitle}")
 
-    elif(productRow[9][3:5] == "EB"):
+    elif(productRow[1][3:5] == "EB"):
         pType = "Base Cabinet"
         width = numString[:2]
         height = "34.5"
         depth = "24"
         tempTitle = f"{width}\"W {height}\"H {depth}\"D ({productRow[0]})"
         tempTag = f"{width}W, {height}H, {depth}D"
-        pDes = "Depth: "+ depth +", Height: "+ height + ", Width: "+ width
+        pDes = "Width:"+ width+ ", Depth:"+ depth +", Height:"+ height 
         if tempSKU[3:6]== "EBD":
             tempType = "Drawer Base Cabinet"
             if tempSKU[-2:] == "W1":
@@ -339,17 +344,36 @@ for productRow in productList:
                 pTitle = f"{tempType} {tempTitle}"
             elif tempSKU[-2:]== "HM":
                 tempType = "Hamper Base Cabinet (FHD)"
-                pTag = f"{tagFormat(tempType)}, {tempTag}, fhd" 
+                pTag = f"{tagFormat(tempType)}, {tempTag}, fhd, hamper" 
                 pTitle = f"{tempType} {tempTitle}"       
 
         # print(f"tag: {pTag}")
         # print(f"title: {pTitle}")
 
+    width = int(width)
+    photoSKU = productRow[1][3:].replace('-', '')
+    for cName in cPhotoName:
+        if photoSKU == "EBFGP" and width == 15:
+            pattern1 = re.compile(rf".+-{photoSKU}_SINGLE.jpg")
+            if re.match(pattern1, cName):
+                photoLink = cURL + cName
+        elif photoSKU == "EBFGP" and width == 15:
+            pattern1 = re.compile(rf".+-{photoSKU}_DOUBLE.jpg")
+            if re.match(pattern1, cName):
+                photoLink = cURL + cName
+        elif width < 24 :        
+            pattern1 = re.compile(rf".+-{photoSKU}(?:_SINGLEDOOR)?.jpg")
+            if re.match(pattern1, cName):
+                photoLink = cURL + cName
+        elif width >= 24 :        
+            pattern1 = re.compile(rf".+-{photoSKU}(?:_DOUBLEDOOR)?.jpg")
+            if re.match(pattern1, cName):
+                photoLink = cURL + cName
 
 
     worksheet.cell(row=insertRow, column=2, value=pTitle)
     worksheet.cell(row=insertRow,column=7,value="active")
-    worksheet.cell(row=insertRow,column=13,value=productRow[1]) 
+    worksheet.cell(row=insertRow,column=13,value=photoLink) 
     worksheet.cell(row=insertRow,column=15,value=pTag) 
     worksheet.cell(row=insertRow,column=16,value="Furniture > Cabinets & Storage > Kitchen Cabinets") 
     worksheet.cell(row=insertRow,column=17,value=pType) 
@@ -376,12 +400,42 @@ for productRow in productList:
             price = round(productRow[2]+productRow[8],2)
         else:
             price =0
+
+        
+        # width大于或者等于24 为doubledoor, 小于24为Singledoor
+        # EBF-GP B15 => 单， B18=> 双
+        tempColor = colorRow[0].replace(' ','').replace('-','')
+        # .+任意字符串
+        # (?P<name>pattern) =》以下语法来创建命名捕获组
+        # 使用了非捕获组 (?:_SINGLEDOOR)? 和 (?:_DOUBLEDOOR)?，表示它们是可选的，即可能存在也可能不存在
+        for cName in cabinetPhotoName:
+            if photoSKU == "EBFGP" and width == 15:
+                pattern = re.compile(rf"B_FHD_GPO-EBFGP_SINGLE--{tempColor}")
+                if re.match(pattern, cName):
+                    varLink = cabinetURL + cName
+
+            elif photoSKU == "EBFGP" and width == 18:
+                pattern = re.compile(rf"B_FHD_GPO-EBFGP_DOUBLE--{tempColor}")
+                if re.match(pattern, cName):
+                    varLink = cabinetURL + cName
+
+            elif width < 24 :        
+                pattern = re.compile(rf".+-{photoSKU}(?:_SINGLEDOOR)?--{tempColor}")
+                if re.match(pattern, cName):
+                    varLink = cabinetURL + cName
+            elif width >= 24 :        
+                pattern = re.compile(rf".+-{photoSKU}(?:_DOUBLEDOOR)?--{tempColor}")
+                if re.match(pattern, cName):
+                    varLink = cabinetURL + cName
+        
+
         worksheet.cell(row=insertRow,column=6,value= price)
         worksheet.cell(row=insertRow,column=8,value="deny")
         worksheet.cell(row=insertRow,column=9,value="manual")
         worksheet.cell(row=insertRow,column=10,value="TRUE")
         worksheet.cell(row=insertRow,column=11,value="TRUE")
         worksheet.cell(row=insertRow,column=12,value="g")
+        worksheet.cell(row=insertRow,column=19,value=varLink)
         insertRow +=1
 
 print("Total removed numbers are: "+ str(count))

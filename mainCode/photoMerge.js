@@ -53,9 +53,11 @@ for (let i = 0; i < bgImgs.length; i++) {
         // [^/.]+ 表示除了点号和斜杠之外的任意字符，+表示匹配一个或多个这样的字符，$表示匹配字符串结尾。
 
         const bgImgName = bgImgs[i].replace(/\s+/g, '').replace(/.[^/.]+$/, ''); 
-        const fgImgName = fgImgs[j].replace(/\s+/g, '');
+        const fgImgName = fgImgs[j].replace(/\s+/g, '').replace(/-/g, '');
         const outputName = `${bgImgName}--${fgImgName}`; // 修改名字格式
         fs.writeFileSync(outputDir + outputName, mergedImg);
+      }).catch(error => {
+        console.error(`Error processing image ${fgImgPath}:`, error);
       });
     }
   });
