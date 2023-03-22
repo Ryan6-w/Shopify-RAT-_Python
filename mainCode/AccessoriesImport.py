@@ -43,7 +43,7 @@ if os.path.exists(newExcelPath):
 # 读取第一个 Excel 文件，提取指定列的数据
 colors = pd.read_excel(colorPath, usecols=['Color name','Panel Code','Price Level'])
 # 读取第二个 Excel 文件，提取指定列的数据
-products= pd.read_excel(productPath, sheet_name='test', usecols=['CABINET','SKU','COMODO_BOX','A','B','C','D','E','F'])
+products= pd.read_excel(productPath, sheet_name='Acc', usecols=['CABINET','SKU','COMODO_BOX','A','B','C','D','E','F'])
 
 # 指定要获取值的列名列表
 colorsExtract = ['Color name','Panel Code','Price Level']
