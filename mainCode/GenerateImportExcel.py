@@ -115,7 +115,7 @@ for productRow in productList:
     depth = numString[4:6]
     tempTitle = f"{width}\"W {height}\"H {depth}\"D ({productRow[0]})"
     tempTag = f"{width}W, {height}H, D{depth}D"
-    pDes = "Width:"+ width+ ", Depth:"+ depth +", Height:"+ height 
+    pDes = "Width:"+ width +", Height:"+ height+  ", Depth:"+ depth  
 
     if tempSKU[3:5] == "EW":
         pType = "Wall Cabinet"
@@ -204,7 +204,7 @@ for productRow in productList:
         depth = "24"
         tempTitle = f"{width}\"W {height}\"H {depth}\"D ({productRow[0]})"
         tempTag = f"{width}W, {height}H, {depth}D"
-        pDes = "Width:"+ width+ ", Depth:"+ depth +", Height:"+ height 
+        pDes = "Width:"+ width +", Height:"+ height+  ", Depth:"+ depth  
         if tempSKU[3:6]== "EBD":
             tempType = "Drawer Base Cabinet"
             if tempSKU[-2:] == "W1":
