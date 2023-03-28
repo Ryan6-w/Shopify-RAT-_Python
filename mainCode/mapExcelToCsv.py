@@ -4,8 +4,8 @@ from openpyxl import load_workbook
 import os
 
 tempCSVPath = '/Users/ryanweng/Documents/Cuppowood/website/产品导入/product_template.csv'
-excelPath = '/Users/ryanweng/Documents/Cuppowood/Python/Testfiles/output.xlsx'
-newCSVpath = '/Users/ryanweng/Documents/Cuppowood/Python/Testfiles/output.csv'
+excelPath = '/Users/ryanweng/Documents/Cuppowood/Python/Testfiles/FailedItems.xlsx'
+newCSVpath = '/Users/ryanweng/Documents/Cuppowood/Python/Testfiles/FailedItems.csv'
 
 if os.path.exists(newCSVpath):
     os.remove(newCSVpath)

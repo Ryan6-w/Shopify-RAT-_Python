@@ -19,17 +19,8 @@ def tagFormat(s):
 
 colorPath = pd.ExcelFile('/Users/ryanweng/Documents/Cuppowood/website/产品导入/Adroit Stocked Color info.xlsx')
 productPath = pd.ExcelFile('/Users/ryanweng/Documents/Cuppowood/website/产品导入/CNG_Cabinet_ Data.xlsx')
-newExcelPath = '/Users/ryanweng/Documents/Cuppowood/Python/Testfiles/output.xlsx'
+newExcelPath = '/Users/ryanweng/Documents/Cuppowood/Python/Testfiles/priceAdjustProduct.xlsx'
 
-cURL ="https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Cabinet/"
-cabinetURL ="https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/ConcatPhoto/"
-
-cPhotoPath ="/Users/ryanweng/Documents/Cuppowood/website/产品导入/Shopify/Cabinet/"
-cPhotoName = os.listdir(cPhotoPath)
-
-# just to get the photo name is could
-cabinetPhotoPath ="/Users/ryanweng/Documents/Cuppowood/website/产品导入/Shopify/ConcatPhoto/"
-cabinetPhotoName = os.listdir(cabinetPhotoPath)
 
 # remove the excel file and csv file
 if os.path.exists(newExcelPath):
@@ -66,27 +57,11 @@ worksheet.cell(row=1, column=1, value='Handle')
 worksheet.cell(row=1, column=2, value='Title')
 worksheet.cell(row=1, column=3, value='Option1 Name')
 worksheet.cell(row=1, column=4, value='Option1 Value') 
-worksheet.cell(row=1, column=5, value='Variant SKU') 
+worksheet.cell(row=1, column=5, value='Variant Compare At Price') 
 worksheet.cell(row=1, column=6, value='Variant Price') 
-worksheet.cell(row=1, column=7, value='Status') 
-worksheet.cell(row=1, column=8, value='Variant Inventory Policy') 
-worksheet.cell(row=1, column=9, value='Variant Fulfillment Service') 
-worksheet.cell(row=1, column=10, value='Variant Requires Shipping') 
-worksheet.cell(row=1, column=11, value='Variant Taxable') 
-worksheet.cell(row=1, column=12, value='Variant Weight Unit') 
-worksheet.cell(row=1, column=13, value='Image Src') 
-worksheet.cell(row=1, column=14, value='Image Position')  # not yet
-worksheet.cell(row=1, column=15, value='Tags') 
-worksheet.cell(row=1, column=16, value='Product Category') 
-worksheet.cell(row=1, column=17, value='Type') 
-worksheet.cell(row=1, column=18, value='Body (HTML)') 
-worksheet.cell(row=1, column=19, value='Variant Image') 
-worksheet.cell(row=1, column=20, value='Variant Compare At Price') 
-
-
 
 insertRow = 2 
-price = actualPrice =count = depth = height = width = 0
+price = actualPrice=count = depth = height = width = 0
 pTitle = pTag = pType = pDes = tempSKU= photoLink = varLink= ""
 
 
@@ -127,19 +102,31 @@ for productRow in productList:
             if int(depth) ==24:
                 tempType = "Refrigerator Wall Cabinet"
                 pTag = f"{tagFormat(tempType)}, {tempTag}" 
-                pTitle = f"{tempType} {tempTitle}"
+                if int(width) < 24:
+                    pTitle = f"{tempType} {tempTitle}_SingleDoor"
+                elif int(width) >= 24:
+                    pTitle = f"{tempType} {tempTitle}_DoubleDoor"
             elif 30<=int(height)<=42:
                 tempType = "High Wall Cabinet"
                 pTag = f"{height}_{tagFormat(tempType)}, {tempTag}"
-                pTitle = f"{height}\" {tempType} {tempTitle}"
+                if int(width) < 24:
+                    pTitle = f"{tempType} {tempTitle}_SingleDoor"
+                elif int(width) >= 24:
+                    pTitle = f"{tempType} {tempTitle}_DoubleDoor"
             elif int(height)<30:
                 tempType = "Standard Hight Wall Cabinet"
                 pTag = f"{tagFormat(tempType)}, {tempTag}"
-                pTitle = f"{tempType} {tempTitle}"
+                if int(width) < 24:
+                    pTitle = f"{tempType} {tempTitle}_SingleDoor"
+                elif int(width) >= 24:
+                    pTitle = f"{tempType} {tempTitle}_DoubleDoor"
             elif 48<=int(height):
                 tempType = "Standing Wall Cabinet"
                 pTag = f"{tagFormat(tempType)}, {tempTag}"
-                pTitle = f"{tempType} {tempTitle}"
+                if int(width) < 24:
+                    pTitle = f"{tempType} {tempTitle}_SingleDoor"
+                elif int(width) >= 24:
+                    pTitle = f"{tempType} {tempTitle}_DoubleDoor"
 
         elif tempSKU[3:6] == "EWL":
             #K2,HX, HK
@@ -182,16 +169,28 @@ for productRow in productList:
             tempType = f"{depth}\" Deep Pantry"
             if tempSKU[-2:] == "PT":
                 pTag = f"{tagFormat(tempType)}, {tempTag}" 
-                pTitle = f"{tempType} {tempTitle}"
+                if int(width) < 24:
+                    pTitle = f"{tempType} {tempTitle}_SingleDoor"
+                elif int(width) >= 24:
+                    pTitle = f"{tempType} {tempTitle}_DoubleDoor"
             elif tempSKU[-2:] == "R3":
                 pTag = f"{tagFormat(tempType)}, {tempTag}, {tagFormat(tempType)}_3_ro" 
-                pTitle = f"{tempType} (3RO) {tempTitle}"
+                if int(width) < 24:
+                    pTitle = f"{tempType} {tempTitle}_SingleDoor"
+                elif int(width) >= 24:
+                    pTitle = f"{tempType} {tempTitle}_DoubleDoor"
             elif tempSKU[-2:] == "R4":
                 pTag = f"{tagFormat(tempType)}, {tempTag}, {tagFormat(tempType)}_4_ro" 
-                pTitle = f"{tempType} (4RO) {tempTitle}"
+                if int(width) < 24:
+                    pTitle = f"{tempType} {tempTitle}_SingleDoor"
+                elif int(width) >= 24:
+                    pTitle = f"{tempType} {tempTitle}_DoubleDoor"
             elif tempSKU[-2:] == "FD":
                 pTag = f"{tagFormat(tempType)}, {tempTag}, {tagFormat(tempType)}_fhd, fhd" 
-                pTitle = f"{tempType} (FHD) {tempTitle}"
+                if int(width) < 24:
+                    pTitle = f"{tempType} {tempTitle}_SingleDoor"
+                elif int(width) >= 24:
+                    pTitle = f"{tempType} {tempTitle}_DoubleDoor"
         elif tempSKU[-2:] =="OV":
             tempType = "Oven Pantry"
             pTag = f"{tagFormat(tempType)}, {tempTag}, oven" 
@@ -287,15 +286,24 @@ for productRow in productList:
             if tempSKU[-2:]== "BR":
                 tempType = "Base Cabinet"
                 pTag = f"{tagFormat(tempType)}, {tempTag}" 
-                pTitle = f"{tempType} {tempTitle}"
+                if int(width) < 24:
+                    pTitle = f"{tempType} {tempTitle}_SingleDoor"
+                elif int(width) >= 24:
+                    pTitle = f"{tempType} {tempTitle}_DoubleDoor"
             elif tempSKU[-2:]== "R1":
                 tempType = "Base Cabinet (1RO)"
                 pTag = f"{tagFormat(tempType)}, {tempTag}, base_cabinet" 
-                pTitle = f"{tempType} {tempTitle}"            
+                if int(width) < 24:
+                    pTitle = f"{tempType} {tempTitle}_SingleDoor"
+                elif int(width) >= 24:
+                    pTitle = f"{tempType} {tempTitle}_DoubleDoor"           
             elif tempSKU[-2:]== "R2":
                 tempType = "Base Cabinet (2RO)"
                 pTag = f"{tagFormat(tempType)}, {tempTag}, base_cabinet" 
-                pTitle = f"{tempType} {tempTitle}"
+                if int(width) < 24:
+                    pTitle = f"{tempType} {tempTitle}_SingleDoor"
+                elif int(width) >= 24:
+                    pTitle = f"{tempType} {tempTitle}_DoubleDoor"
             elif tempSKU[-2:]== "GP":
                 tempType = "Pull-Out Basket Base Cabinet"
                 pTag = f"{tagFormat(tempType)}, {tempTag}, pull_out_basket" 
@@ -320,23 +328,38 @@ for productRow in productList:
             if tempSKU[-2:]== "BF":
                 tempType = "Base Cabinet (FHD)"
                 pTag = f"{tagFormat(tempType)}, {tempTag}, fhd" 
-                pTitle = f"{tempType} {tempTitle}"
+                if int(width) < 24:
+                    pTitle = f"{tempType} {tempTitle}_SingleDoor"
+                elif int(width) >= 24:
+                    pTitle = f"{tempType} {tempTitle}_DoubleDoor"
             elif tempSKU[-2:]== "T1":
                 tempType = "Base Cabinet (FHD Top 1RO)"
                 pTag = f"{tagFormat(tempType)}, {tempTag}, fhd, base_cabinet_fhd" 
-                pTitle = f"{tempType} {tempTitle}"   
+                if int(width) < 24:
+                    pTitle = f"{tempType} {tempTitle}_SingleDoor"
+                elif int(width) >= 24:
+                    pTitle = f"{tempType} {tempTitle}_DoubleDoor"  
             elif tempSKU[-2:]== "R1":
                 tempType = "Base Cabinet (FHD BOT 1RO)"
                 pTag = f"{tagFormat(tempType)}, {tempTag}, fhd, base_cabinet_fhd" 
-                pTitle = f"{tempType} {tempTitle}"         
+                if int(width) < 24:
+                    pTitle = f"{tempType} {tempTitle}_SingleDoor"
+                elif int(width) >= 24:
+                    pTitle = f"{tempType} {tempTitle}_DoubleDoor"        
             elif tempSKU[-2:]== "R2":
                 tempType = "Base Cabinet (FHD 2RO)"
                 pTag = f"{tagFormat(tempType)}, {tempTag}, fhd, base_cabinet_fhd" 
-                pTitle = f"{tempType} {tempTitle}"
+                if int(width) < 24:
+                    pTitle = f"{tempType} {tempTitle}_SingleDoor"
+                elif int(width) >= 24:
+                    pTitle = f"{tempType} {tempTitle}_DoubleDoor"
             elif tempSKU[-2:]== "R3":
                 tempType = "Base Cabinet (FHD 3RO)"
                 pTag = f"{tagFormat(tempType)}, {tempTag}, fhd, base_cabinet_fhd" 
-                pTitle = f"{tempType} {tempTitle}"
+                if int(width) < 24:
+                    pTitle = f"{tempType} {tempTitle}_SingleDoor"
+                elif int(width) >= 24:
+                    pTitle = f"{tempType} {tempTitle}_DoubleDoor"
             elif tempSKU[-2:]== "GP":
                 tempType = "Pull-Out Basket Base Cabinet"
                 pTag = f"{tagFormat(tempType)}, {tempTag}, fhd, pull_out_basket" 
@@ -350,37 +373,9 @@ for productRow in productList:
                 pTag = f"{tagFormat(tempType)}, {tempTag}, fhd, hamper" 
                 pTitle = f"{tempType} {tempTitle}"       
 
-        # print(f"tag: {pTag}")
-        # print(f"title: {pTitle}")
-
-    width = int(width)
-    photoSKU = productRow[1][3:].replace('-', '')
-    for cName in cPhotoName:
-        if photoSKU == "EBFGP" and width == 15:
-            pattern1 = re.compile(rf".+-{photoSKU}_SINGLE.jpg")
-            if re.match(pattern1, cName):
-                photoLink = cURL + cName
-        elif photoSKU == "EBFGP" and width == 15:
-            pattern1 = re.compile(rf".+-{photoSKU}_DOUBLE.jpg")
-            if re.match(pattern1, cName):
-                photoLink = cURL + cName
-        elif width < 24 :        
-            pattern1 = re.compile(rf".+-{photoSKU}(?:_SINGLEDOOR)?.jpg")
-            if re.match(pattern1, cName):
-                photoLink = cURL + cName
-        elif width >= 24 :        
-            pattern1 = re.compile(rf".+-{photoSKU}(?:_DOUBLEDOOR)?.jpg")
-            if re.match(pattern1, cName):
-                photoLink = cURL + cName
 
 
     worksheet.cell(row=insertRow, column=2, value=pTitle)
-    worksheet.cell(row=insertRow,column=7,value="active")
-    worksheet.cell(row=insertRow,column=13,value=photoLink) 
-    worksheet.cell(row=insertRow,column=15,value=pTag) 
-    worksheet.cell(row=insertRow,column=16,value="Furniture > Cabinets & Storage > Kitchen Cabinets") 
-    worksheet.cell(row=insertRow,column=17,value=pType) 
-    worksheet.cell(row=insertRow,column=18,value=pDes) 
 
 
     for colorRow in colorsList:
@@ -388,7 +383,6 @@ for productRow in productList:
         worksheet.cell(row=insertRow, column=1, value="Cuppowood-"+ str(productRow[0]))
         worksheet.cell(row=insertRow,column=3,value="Material")
 
-        worksheet.cell(row=insertRow,column=5,value=str(productRow[0])+"-"+str(colorRow[1]))
         if(colorRow[2] == 'A'):
             price = round(productRow[2]+productRow[3],2)
             actualPrice = round(price *0.4,2)
@@ -409,51 +403,21 @@ for productRow in productList:
             actualPrice = round(price *0.4,2)
         else:
             price =0
-
-        
-        # width大于或者等于24 为doubledoor, 小于24为Singledoor
-        # EBF-GP B15 => 单， B18=> 双
-        tempColor = colorRow[0].replace(' ','').replace('-','')
-        # .+任意字符串
-        # (?P<name>pattern) =》以下语法来创建命名捕获组
-        # 使用了非捕获组 (?:_SINGLEDOOR)? 和 (?:_DOUBLEDOOR)?，表示它们是可选的，即可能存在也可能不存在
-        for cName in cabinetPhotoName:
-            if photoSKU == "EBFGP" and width == 15:
-                pattern = re.compile(rf"B_FHD_GPO-EBFGP_SINGLE--{tempColor}")
-                if re.match(pattern, cName):
-                    varLink = cabinetURL + cName
-
-            elif photoSKU == "EBFGP" and width == 18:
-                pattern = re.compile(rf"B_FHD_GPO-EBFGP_DOUBLE--{tempColor}")
-                if re.match(pattern, cName):
-                    varLink = cabinetURL + cName
-
-            elif width < 24 :        
-                pattern = re.compile(rf".+-{photoSKU}(?:_SINGLEDOOR)?--{tempColor}")
-                if re.match(pattern, cName):
-                    varLink = cabinetURL + cName
-            elif width >= 24 :        
-                pattern = re.compile(rf".+-{photoSKU}(?:_DOUBLEDOOR)?--{tempColor}")
-                if re.match(pattern, cName):
-                    varLink = cabinetURL + cName
         
 
-        worksheet.cell(row=insertRow,column=20,value= price)
-        worksheet.cell(row=insertRow,column=6,value= actualPrice)
-        worksheet.cell(row=insertRow,column=8,value="deny")
-        worksheet.cell(row=insertRow,column=9,value="manual")
-        worksheet.cell(row=insertRow,column=10,value="TRUE")
-        worksheet.cell(row=insertRow,column=11,value="TRUE")
-        worksheet.cell(row=insertRow,column=12,value="g")
-        worksheet.cell(row=insertRow,column=19,value=varLink)
+        worksheet.cell(row=insertRow,column=5,value= price)
+        worksheet.cell(row=insertRow,column=6,value= actualPrice)        
+
+
+
         insertRow +=1
 
 print("Total removed numbers are: "+ str(count))
 workbook.save(newExcelPath)
 
 
-tempCSVPath = '/Users/ryanweng/Documents/Cuppowood/website/产品导入/product_template.csv'
-newCSVpath = '/Users/ryanweng/Documents/Cuppowood/Python/Testfiles/output.csv'
+tempCSVPath = '/Users/ryanweng/Documents/Cuppowood/website/产品导入/PriceUpdate_template.csv'
+newCSVpath = '/Users/ryanweng/Documents/Cuppowood/Python/Testfiles/priceAdjustProduct.csv'
 
 if os.path.exists(newCSVpath):
     os.remove(newCSVpath)

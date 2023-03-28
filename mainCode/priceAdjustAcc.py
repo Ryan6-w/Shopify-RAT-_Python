@@ -27,14 +27,8 @@ def info(w,h,d,sku):
 
 colorPath = pd.ExcelFile('/Users/ryanweng/Documents/Cuppowood/website/产品导入/Adroit Stocked Color info.xlsx')
 productPath = pd.ExcelFile('/Users/ryanweng/Documents/Cuppowood/website/产品导入/CNG_Cabinet_ Data.xlsx')
-newExcelPath = '/Users/ryanweng/Documents/Cuppowood/Python/Testfiles/accOutput.xlsx'
+newExcelPath = '/Users/ryanweng/Documents/Cuppowood/Python/Testfiles/priceAdjustAcc.xlsx'
 
-accURL ="https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Accessorise/"
-accConcateURL ="https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/AccConcatPhoto/"
-
-# just to get the photo name is could
-accConcatePath ="/Users/ryanweng/Documents/Cuppowood/website/产品导入/Shopify/AccConcatPhoto/"
-accConcateName = os.listdir(accConcatePath)
 
 # remove the excel file and csv file
 if os.path.exists(newExcelPath):
@@ -71,22 +65,8 @@ worksheet.cell(row=1, column=1, value='Handle')
 worksheet.cell(row=1, column=2, value='Title')
 worksheet.cell(row=1, column=3, value='Option1 Name')
 worksheet.cell(row=1, column=4, value='Option1 Value') 
-worksheet.cell(row=1, column=5, value='Variant SKU') 
+worksheet.cell(row=1, column=5, value='Variant Compare At Price') 
 worksheet.cell(row=1, column=6, value='Variant Price') 
-worksheet.cell(row=1, column=7, value='Status') 
-worksheet.cell(row=1, column=8, value='Variant Inventory Policy') 
-worksheet.cell(row=1, column=9, value='Variant Fulfillment Service') 
-worksheet.cell(row=1, column=10, value='Variant Requires Shipping') 
-worksheet.cell(row=1, column=11, value='Variant Taxable') 
-worksheet.cell(row=1, column=12, value='Variant Weight Unit') 
-worksheet.cell(row=1, column=13, value='Image Src') 
-worksheet.cell(row=1, column=14, value='Image Position')  # not yet
-worksheet.cell(row=1, column=15, value='Tags') 
-worksheet.cell(row=1, column=16, value='Product Category') 
-worksheet.cell(row=1, column=17, value='Type') 
-worksheet.cell(row=1, column=18, value='Body (HTML)') 
-worksheet.cell(row=1, column=19, value='Variant Image') 
-worksheet.cell(row=1, column=20, value='Variant Compare At Price') 
 
 
 
@@ -282,56 +262,16 @@ for productRow in productList:
         pTag = f"{tagFormat(tempType)}, {tempTag}, accessories" 
         pTitle = f"{tempType} {tempTitle}"
 
-    
-    # Acc Link
-    if tempSKU == "KI-T-FILLER" or tempSKU == "KI-FILLER":
-        photoName = "F.jpg"
-        photoLink = accURL + photoName
-    elif tempSKU == "KI-L-FILLER" or tempSKU == "KI-T-L-FILLER":
-        photoName = "LF.jpg"
-        photoLink = accURL + photoName
-    elif tempSKU == "KI-L-PANEL":
-        photoName = "DWR.jpg"
-        photoLink = accURL + photoName
-    elif tempSKU[3:8] == "PANEL":
-        if productRow[0][0] in ("W","D","B"):
-            if productRow[0][:3] == "BP3":
-                photoName = "BP_back.jpg"
-                photoLink = accURL + photoName
-            else:
-                photoName = "P.jpg"
-                photoLink = accURL + photoName
-        elif productRow[0][0] == "R":
-            photoName = "REP.jpg"
-            photoLink = accURL + photoName
-    elif tempSKU == "KI-TK":
-        photoName = "TK.jpg"
-        photoLink = accURL + photoName
-    elif tempSKU[-6:] == "COLOUM":
-        if productRow[0][0] == "B":
-            photoName = "BCOL.jpg"
-            photoLink = accURL + photoName
-        elif productRow[0][0] == "W":
-            photoName = "WCOL.jpg"
-            photoLink = accURL + photoName
-
 
 
     worksheet.cell(row=insertRow, column=2, value=pTitle)
-    worksheet.cell(row=insertRow,column=7,value="active")
-    worksheet.cell(row=insertRow,column=13,value=photoLink) 
-    worksheet.cell(row=insertRow,column=15,value=pTag) 
-    worksheet.cell(row=insertRow,column=16,value="Furniture > Cabinets & Storage > Kitchen Cabinets") 
-    worksheet.cell(row=insertRow,column=17,value=pType) 
-    worksheet.cell(row=insertRow,column=18,value=pDes) 
-
+    # worksheet.cell(row=insertRow,column=7,value="active")
 
     for colorRow in colorsList:
         worksheet.cell(row=insertRow, column=4, value=colorRow[0])
         worksheet.cell(row=insertRow, column=1, value="Cuppowood-"+ str(productRow[0]))
         worksheet.cell(row=insertRow,column=3,value="Material")
 
-        worksheet.cell(row=insertRow,column=5,value=str(productRow[0])+"-"+str(colorRow[1]))
         if(colorRow[2] == 'A'):
             price = round(productRow[3],2)
             actualPrice = round(price *0.4,2)
@@ -354,30 +294,18 @@ for productRow in productList:
             price =0
         
 
-        tempColor = colorRow[0].replace(' ','').replace('-','')
-
-        for aName in accConcateName:
-            pattern = re.compile(rf"{photoName.replace('.jpg','')}--{tempColor}")
-            if re.match(pattern, aName):
-                varLink = accConcateURL + aName
-
-
+        worksheet.cell(row=insertRow,column=5,value= price)
         worksheet.cell(row=insertRow,column=6,value= actualPrice)
-        worksheet.cell(row=insertRow,column=20,value= price)
-        worksheet.cell(row=insertRow,column=8,value="deny")
-        worksheet.cell(row=insertRow,column=9,value="manual")
-        worksheet.cell(row=insertRow,column=10,value="TRUE")
-        worksheet.cell(row=insertRow,column=11,value="TRUE")
-        worksheet.cell(row=insertRow,column=12,value="g")
-        worksheet.cell(row=insertRow,column=19,value=varLink)
+
+
         insertRow +=1
 
 print("Total removed numbers are: "+ str(count))
 workbook.save(newExcelPath)
 
 
-tempCSVPath = '/Users/ryanweng/Documents/Cuppowood/website/产品导入/product_template.csv'
-newCSVpath = '/Users/ryanweng/Documents/Cuppowood/Python/Testfiles/accOutput.csv'
+tempCSVPath = '/Users/ryanweng/Documents/Cuppowood/website/产品导入/PriceUpdate_template.csv'
+newCSVpath = '/Users/ryanweng/Documents/Cuppowood/Python/Testfiles/priceAdjustAcc.csv'
 
 if os.path.exists(newCSVpath):
     os.remove(newCSVpath)
