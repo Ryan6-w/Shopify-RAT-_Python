@@ -25,20 +25,25 @@ def info(w,h,d,sku):
     pDes = "Width:"+ w +", Height:"+ h +  ", Depth:"+ d  
     return tempTitle,tempTag,pDes
 
-# colorPath = pd.ExcelFile('/Users/ryanweng/Documents/Cuppowood/website/产品导入/Adroit Stocked Color info.xlsx')
-# productPath = pd.ExcelFile('/Users/ryanweng/Documents/Cuppowood/website/产品导入/CNG_Cabinet_ Data.xlsx')
-# newExcelPath = '/Users/ryanweng/Documents/Cuppowood/Python/Testfiles/priceAdjustAcc.xlsx'
-
 colorPath = pd.ExcelFile("D:\Spaice\文件\Adroit Stocked Color info.xlsx")
 productPath = pd.ExcelFile('D:\Spaice\文件\CNG_Cabinet_ Data.xlsx')
-newExcelPath = 'D:\Spaice\output\PriceAdjustAcc.xlsx'
+newExcelPath = 'D:\Spaice\output\outputVaribleAcc.xlsx'
+
+accURL ="https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/Accessorise/"
+accConcateURL ="https://s3.us-east-2.amazonaws.com/static.spaice.ca/share/cuppowood/AccConcatPhoto/"
+
+# just to get the photo name is could
+# accConcatePath ="/Users/ryanweng/Documents/Cuppowood/website/产品导入/Shopify/AccConcatPhoto/"
+accConcatePath ="D:\Spaice\文件\AccConcatPhoto"
+
+accConcateName = os.listdir(accConcatePath)
 
 # remove the excel file and csv file
 if os.path.exists(newExcelPath):
     os.remove(newExcelPath)
 
 # 读取第一个 Excel 文件，提取指定列的数据
-colors = pd.read_excel(colorPath, usecols=['Color name','Panel Code','Price Level'])
+colors = pd.read_excel(colorPath,sheet_name='Sorted', usecols=['Color name','Panel Code','Price Level'])
 # 读取第二个 Excel 文件，提取指定列的数据
 products= pd.read_excel(productPath, sheet_name='Acc', usecols=['CABINET','SKU','COMODO_BOX','A','B','C','D','E','F'])
 
@@ -68,13 +73,17 @@ worksheet.cell(row=1, column=1, value='Handle')
 worksheet.cell(row=1, column=2, value='Title')
 worksheet.cell(row=1, column=3, value='Option1 Name')
 worksheet.cell(row=1, column=4, value='Option1 Value') 
-worksheet.cell(row=1, column=5, value='Variant Price') 
+worksheet.cell(row=1, column=5, value='Variant SKU') 
+worksheet.cell(row=1, column=6, value='Variant Price')  
+worksheet.cell(row=1, column=7, value='Image Src') 
+worksheet.cell(row=1, column=8, value='Variant Image') 
+worksheet.cell(row=1, column=9, value='Variant Compare At Price') 
 
 
 
 insertRow = 2 
 price = actualPrice = count = depth = height = width = 0
-pTitle = pTag = pType = pDes = tempSKU= photoLink = varLink= photoName= colorName= ""
+pTitle = pTag = pType = pDes = tempSKU= photoLink = varLink= photoName=colorName=""
 
 
 # productList index: 0=sku, 1=kiSKU, 2= box price, 3 = A ,4= B, 5=C, 6=D ,7=E ,8 =F ,
@@ -96,27 +105,27 @@ for productRow in productList:
 
         if productRow[0] =="DWP":
             tempType = "Dishwasher "+pType
-            pTag = f"{tagFormat(pType)}:{tagFormat(tempType)}, {tempTag}" 
+            pTag = f"{tagFormat(tempType)}, {tempTag}, dishwasher, accessories" 
             pTitle = f"{tempType} {tempTitle}"
         elif productRow[0] =="DWP_2DB LOOK":
-            tempType = "Dishwasher Panel (2 Drawer Base Look)"
-            pTag = f"{tagFormat(pType)}:{tagFormat(tempType)}, {tempTag}" 
+            tempType = "Dishwasher Panel (2DB LOOK)"
+            pTag = f"dishwasher_panel, {tempTag}, dishwasher, accessories" 
             pTitle = f"{tempType} {tempTitle}"
         elif productRow[0] =="DWP_3DB LOOK":
-            tempType = "Dishwasher Panel (3 Drawer Base Look)"
-            pTag = f"{tagFormat(pType)}:{tagFormat(tempType)}, {tempTag}" 
+            tempType = "Dishwasher Panel (3DB LOOK)"
+            pTag = f"dishwasher_panel, {tempTag}, dishwasher, accessories" 
             pTitle = f"{tempType} {tempTitle}"
         elif productRow[0] =="DWP_4DB LOOK":
-            tempType = "Dishwasher Panel (4 Drawer Base Look)"
-            pTag = f"{tagFormat(pType)}:{tagFormat(tempType)}, {tempTag}" 
+            tempType = "Dishwasher Panel (4DB LOOK)"
+            pTag = f"dishwasher_panel, {tempTag}, dishwasher, accessories" 
             pTitle = f"{tempType} {tempTitle}"
         elif productRow[0] =="DWP_B1 LOOK":
-            tempType = "Dishwasher Panel (B1 Look)"
-            pTag = f"{tagFormat(pType)}:{tagFormat(tempType)}, {tempTag}" 
+            tempType = "Dishwasher Panel (B1 LOOK)"
+            pTag = f"dishwasher_panel, {tempTag}, dishwasher, accessories" 
             pTitle = f"{tempType} {tempTitle}"
         elif productRow[0] =="DWP_B2 LOOK":
-            tempType = "Dishwasher Panel (B2 Look)"
-            pTag = f"{tagFormat(pType)}:{tagFormat(tempType)}, {tempTag}" 
+            tempType = "Dishwasher Panel (B2 LOOK)"
+            pTag = f"dishwasher_panel, {tempTag}, dishwasher, accessories" 
             pTitle = f"{tempType} {tempTitle}"
 
     elif productRow[0][1:4] == "COL":
@@ -130,7 +139,7 @@ for productRow in productList:
             depth = 24     
             
             tempTitle,tempTag,pDes=info(width,height,depth,productRow[0])
-            pTag = f"{tagFormat(pType)}:{tagFormat(tempType)}, {tempTag}" 
+            pTag = f"{tagFormat(tempType)}, {tempTag}, base, accessories" 
             pTitle = f"{tempType} {tempTitle}"
             
         elif productRow[0][0] == 'W':
@@ -141,7 +150,7 @@ for productRow in productList:
             depth = numString[3:5]
 
             tempTitle,tempTag,pDes=info(width,height,depth,productRow[0])
-            pTag = f"{tagFormat(pType)}:{tagFormat(tempType)}, {tempTag}" 
+            pTag = f"{tagFormat(tempType)}, {tempTag}, wall, accessories" 
             pTitle = f"{tempType} {tempTitle}"
 
     elif tempSKU[-6:] == "FILLER":
@@ -155,13 +164,13 @@ for productRow in productList:
             if productRow[0][:2]== "BF":
                 depth = 3/4
                 tempTitle,tempTag,pDes=info(width,height,depth,productRow[0])
-                pTag = f"{tagFormat(pType)}:{tagFormat(tempType)}, {tempTag}" 
+                pTag = f"{tagFormat(tempType)}, {tempTag}, base, accessories" 
                 pTitle = f"{tempType} {tempTitle}"
             else:
                 depth = 3
                 tempType =  "Base L "+ pType
                 tempTitle,tempTag,pDes=info(width,height,depth,productRow[0])
-                pTag = f"{tagFormat(pType)}:{tagFormat(tempType)}, {tempTag}" 
+                pTag = f"{tagFormat(tempType)}, {tempTag}, base,l_base, accessories" 
                 pTitle = f"{tempType} {tempTitle}"
             
         elif productRow[0][:2]== "WF" or productRow[0][:3]== "WLF":
@@ -172,13 +181,13 @@ for productRow in productList:
             if productRow[0][:2]== "WF":
                 depth = 3/4
                 tempTitle,tempTag,pDes=info(width,height,depth,productRow[0])
-                pTag = f"{tagFormat(pType)}:{tagFormat(tempType)}, {tempTag}" 
+                pTag = f"{tagFormat(tempType)}, {tempTag}, wall, accessories" 
                 pTitle = f"{tempType} {tempTitle}"
             else:
                 depth = 3
                 tempType =  "Wall L "+ pType
                 tempTitle,tempTag,pDes=info(width,height,depth,productRow[0])
-                pTag = f"{tagFormat(pType)}:{tagFormat(tempType)}, {tempTag}" 
+                pTag = f"{tagFormat(tempType)}, {tempTag}, wall,l_wall, accessories" 
                 pTitle = f"{tempType} {tempTitle}"
 
         elif productRow[0][:2]== "TF" or productRow[0][:3]== "TLF":
@@ -189,13 +198,13 @@ for productRow in productList:
             if productRow[0][:2]== "TF":
                 depth = 3/4
                 tempTitle,tempTag,pDes=info(width,height,depth,productRow[0])
-                pTag = f"{tagFormat(pType)}:{tagFormat(tempType)}, {tempTag}" 
+                pTag = f"{tagFormat(tempType)}, {tempTag}, tall, accessories" 
                 pTitle = f"{tempType} {tempTitle}"
             else:
                 depth = 3
                 tempType =  "Tall L "+pType
                 tempTitle,tempTag,pDes=info(width,height,depth,productRow[0])
-                pTag = f"{tagFormat(pType)}:{tagFormat(tempType)}, {tempTag}" 
+                pTag = f"{tagFormat(tempType)}, {tempTag}, tall,l_tall, accessories" 
                 pTitle = f"{tempType} {tempTitle}"
 
     elif tempSKU[-5:] == "PANEL":
@@ -213,12 +222,12 @@ for productRow in productList:
             # need to verify the range 
             if width != "35":
                 tempTitle,tempTag,pDes=info(width,height,depth,productRow[0])
-                pTag = f"{tagFormat(pType)}:{tagFormat(tempType)}, {tempTag}" 
+                pTag = f"{tagFormat(tempType)}, {tempTag}, base, accessories" 
                 pTitle = f"{tempType} {tempTitle}"
             else:
                 tempType = "Back " + pType
                 tempTitle,tempTag,pDes=info(width,height,depth,productRow[0])
-                pTag = f"{tagFormat(pType)}:{tagFormat(tempType)}, {tempTag}" 
+                pTag = f"{tagFormat(tempType)}, {tempTag}, back, accessories" 
                 pTitle = f"{tempType} {tempTitle}"
 
         # need to verify the range 
@@ -230,7 +239,7 @@ for productRow in productList:
             depth = 3/4
 
             tempTitle,tempTag,pDes=info(width,height,depth,productRow[0])
-            pTag = f"{tagFormat(pType)}:{tagFormat(tempType)}, {tempTag}" 
+            pTag = f"{tagFormat(tempType)}, {tempTag}, wall, accessories" 
             pTitle = f"{tempType} {tempTitle}"
 
         elif productRow[0][:3]== "DWR":
@@ -241,7 +250,7 @@ for productRow in productList:
             depth = 24
 
             tempTitle,tempTag,pDes=info(width,height,depth,productRow[0])
-            pTag = f"{tagFormat(pType)}:{tagFormat(tempType)}, {tempTag}" 
+            pTag = f"{tagFormat(tempType)}, {tempTag}, dishwasher, accessories" 
             pTitle = f"{tempType} {tempTitle}"
     
         elif productRow[0][:3]== "REP":
@@ -252,7 +261,7 @@ for productRow in productList:
             depth = 3/4
 
             tempTitle,tempTag,pDes=info(width,height,depth,productRow[0])
-            pTag = f"{tagFormat(pType)}:{tagFormat(tempType)}, {tempTag}" 
+            pTag = f"{tagFormat(tempType)}, {tempTag}, refrigerator, accessories" 
             pTitle = f"{tempType} {tempTitle}"
     
     elif tempSKU[-2:] == "TK":
@@ -261,13 +270,46 @@ for productRow in productList:
         height = 4.5
         depth = 3/4
         tempTitle,tempTag,pDes=info(width,height,depth,productRow[0])
-        pTag = f"{tagFormat(pType)}:{tagFormat(tempType)}, {tempTag}" 
+        pTag = f"{tagFormat(tempType)}, {tempTag}, accessories" 
         pTitle = f"{tempType} {tempTitle}"
+
+    
+    # Acc Link
+    if tempSKU == "KI-T-FILLER" or tempSKU == "KI-FILLER":
+        photoName = "F.jpg"
+        photoLink = accURL + photoName
+    elif tempSKU == "KI-L-FILLER" or tempSKU == "KI-T-L-FILLER":
+        photoName = "LF.jpg"
+        photoLink = accURL + photoName
+    elif tempSKU == "KI-L-PANEL":
+        photoName = "DWR.jpg"
+        photoLink = accURL + photoName
+    elif tempSKU[3:8] == "PANEL":
+        if productRow[0][0] in ("W","D","B"):
+            if productRow[0][:3] == "BP3":
+                photoName = "BP_back.jpg"
+                photoLink = accURL + photoName
+            else:
+                photoName = "P.jpg"
+                photoLink = accURL + photoName
+        elif productRow[0][0] == "R":
+            photoName = "REP.jpg"
+            photoLink = accURL + photoName
+    elif tempSKU == "KI-TK":
+        photoName = "TK.jpg"
+        photoLink = accURL + photoName
+    elif tempSKU[-6:] == "COLOUM":
+        if productRow[0][0] == "B":
+            photoName = "BCOL.jpg"
+            photoLink = accURL + photoName
+        elif productRow[0][0] == "W":
+            photoName = "WCOL.jpg"
+            photoLink = accURL + photoName
 
 
 
     worksheet.cell(row=insertRow, column=2, value=pTitle)
-    # worksheet.cell(row=insertRow,column=7,value=photoLink) 
+    worksheet.cell(row=insertRow,column=7,value=photoLink) 
 
     for colorRow in colorsList:
         if(colorRow[2] == 'A' or colorRow[2] == 'B'):
@@ -282,6 +324,7 @@ for productRow in productList:
         worksheet.cell(row=insertRow, column=1, value="Cuppowood-"+ str(productRow[0]))
         worksheet.cell(row=insertRow,column=3,value="Material")
 
+        worksheet.cell(row=insertRow,column=5,value=str(productRow[0])+"-"+str(colorRow[1]))
         if(colorRow[2] == 'A'):
             price = round(productRow[3],2)
             # actualPrice = round(price *0.4,2)
@@ -303,14 +346,25 @@ for productRow in productList:
         else:
             price =0
         
-        worksheet.cell(row=insertRow,column=5,value= price)
+
+        tempColor = colorRow[0].replace(' ','').replace('-','')
+
+        for aName in accConcateName:
+            pattern = re.compile(rf"{photoName.replace('.jpg','')}--{tempColor}")
+            if re.match(pattern, aName):
+                varLink = accConcateURL + aName
+
+        worksheet.cell(row=insertRow,column=6,value= price)
+        # worksheet.cell(row=insertRow,column=6,value= actualPrice)
+        # worksheet.cell(row=insertRow,column=20,value= price)
+        worksheet.cell(row=insertRow,column=8,value=varLink)
         insertRow +=1
 
 print("Total removed numbers are: "+ str(count))
 workbook.save(newExcelPath)
 
 
-newCSVpath = 'D:\Spaice\output\PriceAdjustAcc.csv'
+newCSVpath = 'D:\Spaice\output\outputVaribleAcc.csv'
 
 if os.path.exists(newCSVpath):
     os.remove(newCSVpath)
